@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/widgets/card_fruits.dart';
 
 class Fruits {
   String name;

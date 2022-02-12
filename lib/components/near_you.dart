@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/home_page_controller.dart';
-import 'package:fruit_store_app/styles/default_styles.dart';
 import 'package:fruit_store_app/widgets/card_near.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:get/get.dart';
