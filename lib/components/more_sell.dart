@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/home_page_controller.dart';
+import 'package:fruit_store_app/views/cart_page/cart_page.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:get/get.dart';
@@ -44,6 +45,11 @@ class MoreSell extends StatelessWidget {
                     bgColor: _controller.fruitsList[index].bgColor,
                     image: _controller.fruitsList[index].image,
                     iconColor: _controller.fruitsList[index].iconColor,
+                    onTap: () {
+                      Get.to(() => CartPage(
+                            fruits: _controller.fruitsList[index],
+                          ));
+                    },
                   );
                 },
               ),

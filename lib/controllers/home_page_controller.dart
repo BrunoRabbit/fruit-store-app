@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:fruit_store_app/models/fruits.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/card_near.dart';
@@ -8,6 +6,7 @@ import 'package:get/get.dart';
 class HomePageController extends GetxController {
   RxList<CardFruits> fruitsList = [
     CardFruits(
+      onTap: () {},
       name: 'Laranja',
       price: 2.89,
       bgColor: colorFirst.withOpacity(0.3),
@@ -15,6 +14,7 @@ class HomePageController extends GetxController {
       iconColor: colorFirst,
     ),
     CardFruits(
+      onTap: () {},
       name: 'Abacaxi',
       price: 3.02,
       bgColor: colorSecond.withOpacity(0.3),
@@ -22,6 +22,7 @@ class HomePageController extends GetxController {
       iconColor: colorSecond,
     ),
     CardFruits(
+      onTap: () {},
       name: 'Tomate',
       price: 2.01,
       bgColor: colorFirst.withOpacity(0.3),
