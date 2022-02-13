@@ -20,17 +20,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              SizedBox(
-                height: 20,
-              ),
               SearchFruits(),
-              SizedBox(
-                height: 20,
-              ),
               MoreSell(),
-              SizedBox(
-                height: 20,
-              ),
               NearYou(),
             ],
           ),

@@ -10,6 +10,9 @@ class SearchFruits extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(
+          height: 20,
+        ),
         const CustomText(
           fontFamily: 'Inter-Bold',
           label: 'Bem vindo,',
@@ -47,6 +50,9 @@ class SearchFruits extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        const SizedBox(
+          height: 20,
         ),
       ],
     );
