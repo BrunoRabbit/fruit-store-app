@@ -7,6 +7,7 @@ class CustomText extends StatelessWidget {
   final String? fontFamily;
   final Color? color;
   final FontWeight? fontWeight;
+  final TextOverflow? textOverflow;
 
   const CustomText({
     Key? key,
@@ -16,6 +17,7 @@ class CustomText extends StatelessWidget {
     this.fontFamily,
     this.color,
     this.fontWeight,
+    this.textOverflow,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,7 @@ class CustomText extends StatelessWidget {
           fontFamily: fontFamily,
           color: color,
           fontWeight: fontWeight,
+          overflow: textOverflow,
         ),
         children: [
           TextSpan(
