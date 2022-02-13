@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_store_app/components/more_sell.dart';
-import 'package:fruit_store_app/components/near_you.dart';
-import 'package:fruit_store_app/components/search_fruits.dart';
 import 'package:fruit_store_app/views/home_page/widgets/app_bar_widget.dart';
+import 'package:fruit_store_app/views/home_page/widgets/more_sell.dart';
+import 'package:fruit_store_app/views/home_page/widgets/near_you.dart';
+import 'package:fruit_store_app/views/home_page/widgets/search_fruits.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

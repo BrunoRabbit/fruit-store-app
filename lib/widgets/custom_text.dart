@@ -10,7 +10,7 @@ class CustomText extends StatelessWidget {
   const CustomText({
     Key? key,
     required this.label,
-    required this.size,
+    this.size = 14,
     this.fontFamily,
     this.color,
     this.fontWeight,

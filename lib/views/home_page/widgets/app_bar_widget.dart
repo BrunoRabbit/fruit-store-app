@@ -1,3 +1,4 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -33,7 +34,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           child: IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.shopping_cart_outlined,
+              FeatherIcons.shoppingCart,
               color: Colors.black,
               size: 30,
             ),
