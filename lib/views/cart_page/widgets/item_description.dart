@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fruit_store_app/controllers/cart_page_controller.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
@@ -14,6 +15,7 @@ class ItemDescription extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final _controller = CartPageController();
     return Container(
       width: double.infinity,
       color: primaryColor.withOpacity(0.1),
@@ -32,59 +34,36 @@ class ItemDescription extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomText(
-                    label: fruits.name,
-                    size: 20,
-                    fontFamily: 'Inter-Bold',
-                  ),
-                ),
-                const Spacer(),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        color: primaryColor,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                    Container(
-                      width: 35,
-                      height: 35,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset(
-                        './assets/images/like.png',
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: CustomText(
+                label: fruits.name,
+                size: 20,
+                fontFamily: 'Inter-Bold',
+              ),
             ),
             Row(
-              children: const [
-                StarIcon(),
-                StarIcon(),
-                StarIcon(),
-                StarIcon(),
-                StarIcon(),
-                SizedBox(
-                  width: 10,
+              children: [
+                RatingBar.builder(
+                  itemSize: 28,
+                  glow: false,
+                  allowHalfRating: true,
+                  itemBuilder: (context, index) {
+                    return const StarIcon();
+                  },
+                  onRatingUpdate: (value) {
+                    _controller.rating = value;
+                  },
+                  updateOnDrag: true,
                 ),
-                CustomText(
-                  label: '5.0',
-                  fontFamily: 'Inter-Bold',
-                  size: 16,
-                  richLabel: ' (42 reviews)',
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, left: 8),
+                  child: CustomText(
+                    label: '${_controller.rating}',
+                    fontFamily: 'Inter-Bold',
+                    size: 18,
+                    richLabel: ' (42 reviews)',
+                  ),
                 ),
               ],
             ),

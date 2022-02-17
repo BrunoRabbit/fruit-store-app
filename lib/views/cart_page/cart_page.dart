@@ -9,7 +9,6 @@ import 'package:fruit_store_app/views/cart_page/widgets/item_price.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
-import 'package:get/get.dart';
 
 class CartPage extends StatelessWidget {
   final CardFruits fruits;

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_store_app/controllers/cart_page_controller.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
-import 'package:get/get.dart';
+import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
 class ItemPrice extends StatelessWidget {
   final CardFruits fruits;
@@ -17,7 +16,7 @@ class ItemPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = Get.put(CartPageController());
+    final _controller = CartPageController();
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -74,26 +73,30 @@ class ItemPrice extends StatelessWidget {
             ),
             Row(
               children: [
-                Obx(
-                  () => Container(
-                    width: 43,
-                    height: 43,
-                    decoration: const BoxDecoration(
-                      color: primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          _controller.isFavorite.value =
-                              !_controller.isFavorite.value;
-                        },
-                        child: SvgPicture.asset(
-                          _controller.isFavorite.value
-                              ? './assets/svgs/heart-full.svg'
-                              : './assets/svgs/heart-empty.svg',
-                          color: Colors.white,
+                Container(
+                  width: 45,
+                  height: 45,
+                  decoration: const BoxDecoration(
+                    color: primaryColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.only(
+                          left: 6,
+                          right: 2,
+                        ),
+                        child: LikeButtonWidget(
+                          size: 28,
+                          isLike: false,
+                          icon: Icons.favorite_border,
+                          secondIcon: Icons.favorite,
                         ),
                       ),
                     ),

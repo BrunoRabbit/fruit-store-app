@@ -1,5 +1,6 @@
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
-class CartPageController extends GetxController {
-  RxBool isFavorite = false.obs;
+class CartPageController extends ChangeNotifier {
+  bool isFavorite = false;
+  double rating = 0.0;
 }

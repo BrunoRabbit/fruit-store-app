@@ -1,10 +1,9 @@
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/card_near.dart';
-import 'package:get/get.dart';
 
-class HomePageController extends GetxController {
-  RxList<CardFruits> fruitsList = [
+class HomePageController {
+  List<CardFruits> fruitsList = [
     CardFruits(
       onTap: () {},
       name: 'Laranja',
@@ -29,9 +28,9 @@ class HomePageController extends GetxController {
       image: './assets/images/tomate.png',
       iconColor: primaryColor,
     ),
-  ].obs;
+  ];
 
-  RxList<CardNear> listCardNear = const [
+  List<CardNear> listCardNear = const [
     CardNear(
       title: 'Lojas Food',
       hours: '09:00 - 12:00',
@@ -46,5 +45,5 @@ class HomePageController extends GetxController {
       distance: '23 km',
       image: './assets/images/yummi-food.png',
     ),
-  ].obs;
+  ];
 }
