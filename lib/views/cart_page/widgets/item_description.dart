@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fruit_store_app/controllers/cart_page_controller.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
@@ -52,17 +54,21 @@ class ItemDescription extends StatelessWidget {
                     return const StarIcon();
                   },
                   onRatingUpdate: (value) {
-                    _controller.rating = value;
+                    BlocProvider.of<RatingCubit>(context).addRating(value);
                   },
                   updateOnDrag: true,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 6, left: 8),
-                  child: CustomText(
-                    label: '${_controller.rating}',
-                    fontFamily: 'Inter-Bold',
-                    size: 18,
-                    richLabel: ' (42 reviews)',
+                  child: BlocBuilder<RatingCubit, RatingState>(
+                    builder: (context, state) {
+                      return CustomText(
+                        label: '${state.rating}',
+                        fontFamily: 'Inter-Bold',
+                        size: 18,
+                        richLabel: ' (42 reviews)',
+                      );
+                    },
                   ),
                 ),
               ],
