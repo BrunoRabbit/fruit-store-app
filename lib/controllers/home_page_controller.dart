@@ -1,32 +1,36 @@
+import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/card_near.dart';
 
 class HomePageController {
-  List<CardFruits> fruitsList = [
-    CardFruits(
+  List<Product> fruitsList = [
+    Product(
       onTap: () {},
       name: 'Orange',
       price: 2.89,
       bgColor: primaryColor.withOpacity(0.3),
       image: './assets/images/orange.png',
       iconColor: primaryColor,
+      isFavorite: false,
     ),
-    CardFruits(
+    Product(
       onTap: () {},
       name: 'Pineapple',
       price: 3.02,
       bgColor: secondaryColor.withOpacity(0.3),
       image: './assets/images/abacaxi.png',
       iconColor: secondaryColor,
+      isFavorite: false,
     ),
-    CardFruits(
+    Product(
       onTap: () {},
       name: 'Tomato',
       price: 2.01,
       bgColor: primaryColor.withOpacity(0.3),
       image: './assets/images/tomate.png',
       iconColor: primaryColor,
+      isFavorite: false,
     ),
   ];
 

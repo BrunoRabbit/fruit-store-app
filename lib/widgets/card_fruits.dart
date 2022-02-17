@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
 class CardFruits extends StatelessWidget {
-  final String name;
-  final double price;
-  final Color bgColor;
-  final String image;
-  final Color iconColor;
-  final VoidCallback onTap;
+  final Product product;
 
   const CardFruits({
     Key? key,
-    required this.name,
-    required this.price,
-    required this.bgColor,
-    required this.image,
-    required this.iconColor,
-    required this.onTap,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -26,13 +17,13 @@ class CardFruits extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, right: 25),
       child: InkWell(
-        onTap: onTap,
+        onTap: product.onTap,
         child: Container(
           width: 150,
           height: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: bgColor,
+            color: product.bgColor,
           ),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -43,12 +34,12 @@ class CardFruits extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  label: name,
+                  label: product.name,
                   size: 18,
                   fontFamily: 'Inter-Bold',
                 ),
                 CustomText(
-                  label: '\$$price each',
+                  label: '\$${product.price} each',
                   size: 14,
                   fontFamily: 'Inter-Bold',
                 ),
@@ -56,7 +47,7 @@ class CardFruits extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      image,
+                      product.image,
                       height: 120,
                       width: 120,
                     ),
@@ -66,7 +57,7 @@ class CardFruits extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: bgColor,
+                        color: product.bgColor,
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(20),
                         )),
@@ -74,7 +65,7 @@ class CardFruits extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: Icon(
                         Icons.add,
-                        color: iconColor,
+                        color: product.iconColor,
                       ),
                     ),
                   ),

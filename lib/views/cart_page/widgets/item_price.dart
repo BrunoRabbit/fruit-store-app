@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:fruit_store_app/controllers/cart_page_controller.dart';
+import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
 class ItemPrice extends StatelessWidget {
-  final CardFruits fruits;
+  final Product fruits;
   final String subTitle;
 
   const ItemPrice({
@@ -61,10 +62,11 @@ class ItemPrice extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
+                  shadowColor: primaryColor.withOpacity(0.1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  primary: primaryColor.withOpacity(0.2),
+                  primary: primaryColor.withOpacity(0.3),
                 ),
                 onPressed: () {},
               ),
@@ -88,14 +90,14 @@ class ItemPrice extends StatelessWidget {
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
                           left: 6,
                           right: 2,
                         ),
                         child: LikeButtonWidget(
                           size: 28,
-                          isLike: false,
+                          isLike: fruits.isFavorite,
                           icon: Icons.favorite_border,
                           secondIcon: Icons.favorite,
                         ),

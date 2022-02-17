@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fruit_store_app/controllers/cart_page_controller.dart';
+import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
@@ -9,7 +10,7 @@ import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
 
 class ItemDescription extends StatelessWidget {
-  final CardFruits fruits;
+  final Product fruits;
 
   const ItemDescription({
     Key? key,
@@ -63,7 +64,8 @@ class ItemDescription extends StatelessWidget {
                   child: BlocBuilder<RatingCubit, RatingState>(
                     builder: (context, state) {
                       return CustomText(
-                        label: '${state.rating}',
+                        //VOU FAZER UM PAO
+                        label: '${state.rating}', //TODO - FIX changing screens
                         fontFamily: 'Inter-Bold',
                         size: 18,
                         richLabel: ' (42 reviews)',

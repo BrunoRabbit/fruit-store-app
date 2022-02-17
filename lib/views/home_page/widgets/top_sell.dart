@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/home_page_controller.dart';
+import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/views/cart_page/cart_page.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
@@ -37,21 +38,16 @@ class TopSell extends StatelessWidget {
             children: List.generate(
               _controller.fruitsList.length,
               (index) {
+                Product product = _controller.fruitsList[index];
                 return CardFruits(
-                  name: _controller.fruitsList[index].name,
-                  price: _controller.fruitsList[index].price,
-                  bgColor: _controller.fruitsList[index].bgColor,
-                  image: _controller.fruitsList[index].image,
-                  iconColor: _controller.fruitsList[index].iconColor,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CartPage(
-                                fruits: _controller.fruitsList[index],
-                              )),
-                    );
-                  },
+                  product: Product(
+                    name: product.name,
+                    price: product.price,
+                    bgColor: product.bgColor,
+                    image: product.image,
+                    iconColor: product.iconColor,
+                    onTap: product.onTap,
+                  ),
                 );
               },
             ),
