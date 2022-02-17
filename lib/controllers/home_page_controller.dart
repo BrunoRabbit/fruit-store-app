@@ -6,7 +6,7 @@ class HomePageController {
   List<CardFruits> fruitsList = [
     CardFruits(
       onTap: () {},
-      name: 'Laranja',
+      name: 'Orange',
       price: 2.89,
       bgColor: primaryColor.withOpacity(0.3),
       image: './assets/images/orange.png',
@@ -14,7 +14,7 @@ class HomePageController {
     ),
     CardFruits(
       onTap: () {},
-      name: 'Abacaxi',
+      name: 'Pineapple',
       price: 3.02,
       bgColor: secondaryColor.withOpacity(0.3),
       image: './assets/images/abacaxi.png',
@@ -22,7 +22,7 @@ class HomePageController {
     ),
     CardFruits(
       onTap: () {},
-      name: 'Tomate',
+      name: 'Tomato',
       price: 2.01,
       bgColor: primaryColor.withOpacity(0.3),
       image: './assets/images/tomate.png',
@@ -32,7 +32,7 @@ class HomePageController {
 
   List<CardNear> listCardNear = const [
     CardNear(
-      title: 'Lojas Food',
+      title: 'Good Food',
       hours: '09:00 - 12:00',
       stars: '49',
       distance: '15 km',

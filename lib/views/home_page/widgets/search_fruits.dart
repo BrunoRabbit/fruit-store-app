@@ -15,14 +15,14 @@ class SearchFruits extends StatelessWidget {
         ),
         const CustomText(
           fontFamily: 'Inter-Bold',
-          label: 'Bem vindo,',
+          label: 'Welcome \$user,',
           size: 30,
         ),
         const SizedBox(
           height: 20,
         ),
         CustomText(
-          label: 'Encontre as frutas frescas que você quer',
+          label: 'Find fresh fruits what you want',
           size: 16,
           color: Colors.black.withOpacity(0.5),
         ),
@@ -41,7 +41,7 @@ class SearchFruits extends StatelessWidget {
             child: TextField(
               cursorColor: Colors.black.withOpacity(0.5),
               decoration: InputDecoration(
-                hintText: 'Busque frutas',
+                hintText: 'Search fresh fruits',
                 border: InputBorder.none,
                 prefixIcon: Icon(
                   Icons.search,

@@ -4,8 +4,8 @@ import 'package:fruit_store_app/views/cart_page/cart_page.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
-class MoreSell extends StatelessWidget {
-  const MoreSell({Key? key}) : super(key: key);
+class TopSell extends StatelessWidget {
+  const TopSell({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class MoreSell extends StatelessWidget {
           children: [
             const CustomText(
               fontFamily: 'Inter-Bold',
-              label: 'Mais vendidos',
+              label: 'Top Selling',
               size: 22,
             ),
             const Spacer(),
             TextButton(
               child: CustomText(
                 fontFamily: 'Inter-Bold',
-                label: 'Veja mais',
+                label: 'See All',
                 size: 15,
                 color: Colors.black.withOpacity(0.5),
               ),

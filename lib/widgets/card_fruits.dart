@@ -48,7 +48,7 @@ class CardFruits extends StatelessWidget {
                   fontFamily: 'Inter-Bold',
                 ),
                 CustomText(
-                  label: '\$$price cada',
+                  label: '\$$price each',
                   size: 14,
                   fontFamily: 'Inter-Bold',
                 ),

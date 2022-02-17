@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+
 import 'package:fruit_store_app/controllers/cart_page_controller.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
 class ItemPrice extends StatelessWidget {
   final CardFruits fruits;
+  final String subTitle;
 
   const ItemPrice({
     Key? key,
     required this.fruits,
+    required this.subTitle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _controller = CartPageController();
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -32,8 +33,8 @@ class ItemPrice extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const CustomText(
-              label: 'Sweet and Juicy',
+            CustomText(
+              label: subTitle,
               size: 16,
               color: Colors.black54,
               fontFamily: 'Inter-Medium',

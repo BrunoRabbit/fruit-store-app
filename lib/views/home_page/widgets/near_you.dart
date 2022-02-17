@@ -13,14 +13,14 @@ class NearYou extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CustomText(
-          label: 'Próximo de você',
+          label: 'Near You',
           fontFamily: 'Inter-Bold',
           size: 22,
         ),
         TextButton(
           child: CustomText(
             fontFamily: 'Inter-Bold',
-            label: '+28 Lojas',
+            label: '28+ shops',
             size: 15,
             color: Colors.black.withOpacity(0.5),
           ),

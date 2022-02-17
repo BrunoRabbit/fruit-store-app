@@ -51,6 +51,7 @@ class CartPage extends StatelessWidget {
               ),
               ItemPrice(
                 fruits: fruits,
+                subTitle: 'Sweet and Juicy',
               ),
               ItemDescription(
                 fruits: fruits,
