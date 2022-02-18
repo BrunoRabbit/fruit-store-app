@@ -8,7 +8,7 @@ import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
 class ItemPrice extends StatelessWidget {
-  final Product fruits;
+  final Product? fruits;
   final String subTitle;
 
   const ItemPrice({
@@ -27,7 +27,7 @@ class ItemPrice extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              label: fruits.name,
+              label: fruits!.name,
               size: 28,
               fontFamily: 'Inter-Bold',
             ),
@@ -56,7 +56,7 @@ class ItemPrice extends StatelessWidget {
               width: 125,
               child: ElevatedButton(
                 child: CustomText(
-                  label: '\$${fruits.price}',
+                  label: '\$${fruits!.price}',
                   color: primaryColor,
                   fontFamily: 'Inter-Bold',
                 ),
@@ -97,7 +97,7 @@ class ItemPrice extends StatelessWidget {
                         ),
                         child: LikeButtonWidget(
                           size: 28,
-                          isLike: fruits.isFavorite,
+                          isLike: fruits!.isFavorite,
                           icon: Icons.favorite_border,
                           secondIcon: Icons.favorite,
                         ),

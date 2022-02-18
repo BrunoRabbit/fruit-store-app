@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/models/product.dart';
+import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/cart_page/widgets/item_description.dart';
 import 'package:fruit_store_app/views/cart_page/widgets/item_price.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
 
-class CartPage extends StatelessWidget {
-  final Product product;
+class ItemPage extends StatelessWidget {
+  final Product? product;
 
-  const CartPage({
+  const ItemPage({
     Key? key,
-    required this.product,
+    this.product,
   }) : super(key: key);
 
   @override
@@ -31,24 +32,27 @@ class CartPage extends StatelessWidget {
                     size: 26,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.popAndPushNamed(
+                      context,
+                      RoutesPath.homePage,
+                    );
                   },
                 ),
               ),
               SizedBox(
                 width: double.infinity,
                 child: Image.asset(
-                  product.image,
+                  product!.image,
                   height: 200,
                   fit: BoxFit.contain,
                 ),
               ),
               ItemPrice(
-                fruits: product,
+                fruits: product!,
                 subTitle: 'Sweet and Juicy',
               ),
               ItemDescription(
-                fruits: product,
+                fruits: product!,
               ),
             ],
           ),

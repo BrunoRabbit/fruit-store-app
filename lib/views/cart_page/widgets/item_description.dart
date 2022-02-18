@@ -10,7 +10,7 @@ import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
 
 class ItemDescription extends StatelessWidget {
-  final Product fruits;
+  final Product? fruits;
 
   const ItemDescription({
     Key? key,
@@ -18,7 +18,6 @@ class ItemDescription extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _controller = CartPageController();
     return Container(
       width: double.infinity,
       color: primaryColor.withOpacity(0.1),
@@ -40,7 +39,7 @@ class ItemDescription extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: CustomText(
-                label: fruits.name,
+                label: fruits!.name,
                 size: 20,
                 fontFamily: 'Inter-Bold',
               ),
@@ -64,7 +63,6 @@ class ItemDescription extends StatelessWidget {
                   child: BlocBuilder<RatingCubit, RatingState>(
                     builder: (context, state) {
                       return CustomText(
-                        //VOU FAZER UM PAO
                         label: '${state.rating}', //TODO - FIX changing screens
                         fontFamily: 'Inter-Bold',
                         size: 18,
@@ -103,7 +101,7 @@ class ItemDescription extends StatelessWidget {
             Row(
               children: [
                 CustomText(
-                  label: '\$${fruits.price}',
+                  label: '\$${fruits!.price}',
                   color: primaryColor,
                   size: 20,
                   fontFamily: 'Inter-Bold',

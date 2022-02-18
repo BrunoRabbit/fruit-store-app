@@ -11,7 +11,7 @@ class LikeButtonWidget extends StatelessWidget {
 
   const LikeButtonWidget({
     Key? key,
-    this.isLike = false,
+    required this.isLike,
     this.size = 30,
     required this.icon,
     required this.secondIcon,

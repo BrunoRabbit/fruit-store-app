@@ -6,7 +6,6 @@ class Product {
   final Color bgColor;
   final String image;
   final Color iconColor;
-  final VoidCallback onTap;
   bool isFavorite;
 
   Product({
@@ -16,7 +15,6 @@ class Product {
     required this.bgColor,
     required this.image,
     required this.iconColor,
-    required this.onTap,
     this.isFavorite = false,
   });
 }

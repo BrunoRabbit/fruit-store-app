@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:fruit_store_app/views/cart_page/item_page.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
 class CardFruits extends StatelessWidget {
@@ -17,7 +18,15 @@ class CardFruits extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, right: 25),
       child: InkWell(
-        onTap: product.onTap,
+        onTap: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (_) => ItemPage(
+                product: product,
+              ),
+            ),
+          );
+        },
         child: Container(
           width: 150,
           height: 200,
