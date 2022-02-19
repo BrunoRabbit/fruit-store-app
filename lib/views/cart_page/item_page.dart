@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/cart_page/widgets/item_description.dart';
@@ -15,6 +16,7 @@ class ItemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _controller = ItemPageController();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -32,10 +34,7 @@ class ItemPage extends StatelessWidget {
                     size: 26,
                   ),
                   onPressed: () {
-                    Navigator.popAndPushNamed(
-                      context,
-                      RoutesPath.homePage,
-                    );
+                    _controller.reset(context);
                   },
                 ),
               ),
@@ -48,11 +47,11 @@ class ItemPage extends StatelessWidget {
                 ),
               ),
               ItemPrice(
-                fruits: product!,
+                product: product!,
                 subTitle: 'Sweet and Juicy',
               ),
               ItemDescription(
-                fruits: product!,
+                product: product!,
               ),
             ],
           ),

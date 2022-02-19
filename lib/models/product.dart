@@ -6,7 +6,7 @@ class Product {
   final Color bgColor;
   final String image;
   final Color iconColor;
-  bool isFavorite;
+  final bool isFavorite;
 
   Product({
     Key? key,

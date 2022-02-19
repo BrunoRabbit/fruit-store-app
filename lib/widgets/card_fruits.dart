@@ -19,7 +19,7 @@ class CardFruits extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, right: 25),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacement(
+          Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => ItemPage(
                 product: product,

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:fruit_store_app/controllers/cart_page_controller.dart';
+import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
+import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
 class ItemPrice extends StatelessWidget {
-  final Product? fruits;
+  final Product? product;
   final String subTitle;
 
   const ItemPrice({
     Key? key,
-    required this.fruits,
+    required this.product,
     required this.subTitle,
   }) : super(key: key);
 
@@ -27,7 +28,7 @@ class ItemPrice extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              label: fruits!.name,
+              label: product!.name,
               size: 28,
               fontFamily: 'Inter-Bold',
             ),
@@ -56,7 +57,7 @@ class ItemPrice extends StatelessWidget {
               width: 125,
               child: ElevatedButton(
                 child: CustomText(
-                  label: '\$${fruits!.price}',
+                  label: '\$${product!.price}',
                   color: primaryColor,
                   fontFamily: 'Inter-Bold',
                 ),
@@ -97,7 +98,7 @@ class ItemPrice extends StatelessWidget {
                         ),
                         child: LikeButtonWidget(
                           size: 28,
-                          isLike: fruits!.isFavorite,
+                          product: product!,
                           icon: Icons.favorite_border,
                           secondIcon: Icons.favorite,
                         ),
@@ -106,21 +107,11 @@ class ItemPrice extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
+                CustomButton(
+                  label: 'New',
+                  onPressed: () {},
                   width: 100,
                   height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                      primary: primaryColor,
-                    ),
-                    child: const CustomText(
-                      label: 'New',
-                      fontFamily: 'Inter-Bold',
-                    ),
-                  ),
                 ),
                 const SizedBox(
                   height: 20,

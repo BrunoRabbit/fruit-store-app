@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
+import 'package:fruit_store_app/views/splash_page/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: const HomePage(),
+        home: const SplashScreen(), //splash
         routes: AppRoutes.path,
       ),
     );

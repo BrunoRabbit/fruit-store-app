@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:fruit_store_app/controllers/cart_page_controller.dart';
+
+import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
 import 'package:fruit_store_app/widgets/card_fruits.dart';
+import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
 
 class ItemDescription extends StatelessWidget {
-  final Product? fruits;
+  final Product? product;
 
   const ItemDescription({
     Key? key,
-    required this.fruits,
+    required this.product,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class ItemDescription extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: CustomText(
-                label: fruits!.name,
+                label: product!.name,
                 size: 20,
                 fontFamily: 'Inter-Bold',
               ),
@@ -101,28 +103,15 @@ class ItemDescription extends StatelessWidget {
             Row(
               children: [
                 CustomText(
-                  label: '\$${fruits!.price}',
+                  label: '\$${product!.price}',
                   color: primaryColor,
                   size: 20,
                   fontFamily: 'Inter-Bold',
                 ),
                 const Spacer(),
-                SizedBox(
-                  width: 180,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                      primary: primaryColor,
-                    ),
-                    child: const CustomText(
-                      label: 'Add to cart',
-                      size: 16,
-                      fontFamily: 'Inter-Bold',
-                    ),
-                  ),
+                CustomButton(
+                  label: 'Add to cart',
+                  onPressed: () {},
                 ),
               ],
             ),
