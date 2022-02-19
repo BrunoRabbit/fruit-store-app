@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:fruit_store_app/styles/default_styles.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
@@ -14,33 +16,42 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Spacer(),
-              Image.asset(
-                './assets/images/logo.png',
+              Container(
+                alignment: Alignment.center,
+                height: 300,
+                child: Image.asset(
+                  './assets/images/logo.png',
+                ),
               ),
               const Spacer(),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
+              const SizedBox(
+                height: 75,
+                width: double.infinity,
                 child: CustomText(
-                  label: 'Order your favorites fruits',
+                  label: 'Order your \nfavorites fruits',
                   fontFamily: 'Inter-Bold',
                   size: 32,
                 ),
               ),
               const SizedBox(
-                height: 15,
-              ),
-              const CustomText(
-                label: 'Eat fresh fruits and try to be healthy',
-                size: 20,
-                fontFamily: 'Inter-Medium',
-                color: Colors.black87,
-              ),
-              const SizedBox(
                 height: 25,
               ),
+              const SizedBox(
+                width: double.infinity,
+                child: CustomText(
+                  label: 'Eat fresh fruits and try to be healthy',
+                  size: 20,
+                  fontFamily: 'Inter-Medium',
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+                padding: const EdgeInsets.symmetric(
+                  vertical: defaultPadding * 1.8,
+                ),
                 child: Row(
                   children: [
                     Row(
