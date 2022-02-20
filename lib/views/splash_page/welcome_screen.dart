@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/styles/default_styles.dart';
+import 'package:fruit_store_app/views/splash_page/bloc/cubit/progress_bar_cubit.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
+import 'package:fruit_store_app/widgets/step_bar_widget.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,46 +55,37 @@ class SplashScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   vertical: defaultPadding * 1.8,
                 ),
-                child: Row(
-                  children: [
-                    Row(
+                child: BlocBuilder<ProgressBarCubit, int>(
+                  builder: (context, state) {
+                    return Row(
                       children: [
-                        LayoutBuilder(
-                          builder: (context, constraints) {
-                            return Stack(
-                              children: [
-                                Container(
-                                  height: 6,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                Container(
-                                  height: 6,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
+                        StepBarWidget(
+                          isCompleted: state == 1,
                         ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        StepBarWidget(
+                          isCompleted: state == 2,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        StepBarWidget(
+                          isCompleted: state == 3,
+                        ),
+                        const Spacer(),
+                        CustomButton(
+                          width: 130,
+                          label: 'Next',
+                          onPressed: () {
+                            BlocProvider.of<ProgressBarCubit>(context)
+                                .nextWelcomeStep();
+                          },
+                        )
                       ],
-                    ),
-                    const Spacer(),
-                    CustomButton(
-                      width: 130,
-                      label: 'Next',
-                      onPressed: () {},
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
             ],

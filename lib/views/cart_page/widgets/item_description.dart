@@ -46,34 +46,34 @@ class ItemDescription extends StatelessWidget {
                 fontFamily: 'Inter-Bold',
               ),
             ),
-            Row(
-              children: [
-                RatingBar.builder(
-                  itemSize: 28,
-                  glow: false,
-                  allowHalfRating: true,
-                  itemBuilder: (context, index) {
-                    return const StarIcon();
-                  },
-                  onRatingUpdate: (value) {
-                    BlocProvider.of<RatingCubit>(context).addRating(value);
-                  },
-                  updateOnDrag: true,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 6, left: 8),
-                  child: BlocBuilder<RatingCubit, RatingState>(
-                    builder: (context, state) {
-                      return CustomText(
+            BlocBuilder<RatingCubit, RatingState>(
+              builder: (context, state) {
+                return Row(
+                  children: [
+                    RatingBar.builder(
+                      itemSize: 28,
+                      glow: false,
+                      allowHalfRating: true,
+                      itemBuilder: (context, index) {
+                        return const StarIcon();
+                      },
+                      onRatingUpdate: (value) {
+                        BlocProvider.of<RatingCubit>(context).addRating(value);
+                      },
+                      updateOnDrag: true,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6, left: 8),
+                      child: CustomText(
                         label: '${state.rating}', //TODO - FIX changing screens
                         fontFamily: 'Inter-Bold',
                         size: 18,
                         richLabel: ' (42 reviews)',
-                      );
-                    },
-                  ),
-                ),
-              ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             const SizedBox(
               height: 20,
