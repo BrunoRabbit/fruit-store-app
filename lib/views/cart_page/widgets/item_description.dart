@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
-import 'package:fruit_store_app/widgets/card_fruits.dart';
+import 'package:fruit_store_app/views/cart_page/bloc/rating_cubit/rating_cubit.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/star_icon.dart';
@@ -51,6 +49,7 @@ class ItemDescription extends StatelessWidget {
                 return Row(
                   children: [
                     RatingBar.builder(
+                      initialRating: product!.rating,
                       itemSize: 28,
                       glow: false,
                       allowHalfRating: true,
@@ -65,7 +64,8 @@ class ItemDescription extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 6, left: 8),
                       child: CustomText(
-                        label: '${state.rating}', //TODO - FIX changing screens
+                        label:
+                            '${product!.rating}', //TODO - FIX changing screens
                         fontFamily: 'Inter-Bold',
                         size: 18,
                         richLabel: ' (42 reviews)',

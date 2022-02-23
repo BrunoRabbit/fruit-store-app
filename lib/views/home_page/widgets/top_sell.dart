@@ -46,6 +46,7 @@ class TopSell extends StatelessWidget {
                     bgColor: product.bgColor,
                     image: product.image,
                     iconColor: product.iconColor,
+                    rating: product.rating,
                   ),
                 );
               },

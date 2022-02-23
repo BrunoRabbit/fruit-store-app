@@ -13,6 +13,7 @@ class HomePageController {
       image: './assets/images/orange.png',
       iconColor: primaryColor,
       isFavorite: false,
+      rating: 2.0,
     ),
     Product(
       name: 'Pineapple',
@@ -21,6 +22,7 @@ class HomePageController {
       image: './assets/images/abacaxi.png',
       iconColor: secondaryColor,
       isFavorite: false,
+      rating: 3.0,
     ),
     Product(
       name: 'Tomato',
@@ -29,6 +31,7 @@ class HomePageController {
       image: './assets/images/tomate.png',
       iconColor: primaryColor,
       isFavorite: false,
+      rating: 5.0,
     ),
   ];
 

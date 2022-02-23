@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
-import 'package:fruit_store_app/views/cart_page/bloc/cubit/rating_cubit.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
 import 'package:fruit_store_app/views/splash_page/bloc/cubit/progress_bar_cubit.dart';
-import 'package:fruit_store_app/views/splash_page/welcome_screen.dart';
+
+import 'views/cart_page/bloc/rating_cubit/rating_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: const WelcomeScreen(), //splash
+        home: const HomePage(), //splash
         routes: AppRoutes.path,
       ),
     );

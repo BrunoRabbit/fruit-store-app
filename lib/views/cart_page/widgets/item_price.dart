@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/widgets/card_fruits.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';

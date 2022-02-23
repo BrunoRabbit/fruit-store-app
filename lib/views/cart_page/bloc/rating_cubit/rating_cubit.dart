@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fruit_store_app/models/product.dart';
 
 part 'rating_state.dart';
 

@@ -6,7 +6,8 @@ class Product {
   final Color bgColor;
   final String image;
   final Color iconColor;
-  final bool isFavorite;
+  bool isFavorite;
+  final double rating;
 
   Product({
     Key? key,
@@ -16,5 +17,10 @@ class Product {
     required this.image,
     required this.iconColor,
     this.isFavorite = false,
+    required this.rating,
   });
+
+  Future<bool> toggleFavorite() async {
+    return isFavorite = !isFavorite;
+  }
 }
