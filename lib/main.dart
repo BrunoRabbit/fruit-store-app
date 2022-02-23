@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_store_app/routes/app_routes.dart';
-import 'package:fruit_store_app/views/home_page/home_page.dart';
-import 'package:fruit_store_app/views/splash_page/bloc/cubit/progress_bar_cubit.dart';
+import 'routes/app_routes.dart';
+import 'views/welcome_page/bloc/cubit/progress_bar_cubit.dart';
+
+import 'views/welcome_page/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: const HomePage(), //splash
+        home: const WelcomeScreen(), //splash
         routes: AppRoutes.path,
       ),
     );
