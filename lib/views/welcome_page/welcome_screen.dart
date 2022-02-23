@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/routes/app_routes.dart';
 import '../../styles/default_styles.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
-import '../../widgets/step_bar_widget.dart';
+import 'widgets/step_bar_widget.dart';
 import 'bloc/cubit/progress_bar_cubit.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -95,6 +96,11 @@ class WelcomeScreen extends StatelessWidget {
                               onPressed: () {
                                 BlocProvider.of<ProgressBarCubit>(context)
                                     .nextWelcomeStep();
+                                if (state == 3) {
+                                  Navigator.of(context).pushNamed(
+                                    RoutesPath.homePage,
+                                  );
+                                }
                               },
                             )
                           ],
