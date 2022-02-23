@@ -53,7 +53,7 @@ class ItemDescription extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 6, left: 8),
                   child: CustomText(
-                    label: '${product!.rating}', //TODO - FIX changing screens
+                    label: '${product!.rating}',
                     fontFamily: 'Inter-Bold',
                     size: 18,
                     richLabel: ' (42 reviews)',

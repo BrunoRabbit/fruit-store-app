@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fruit_store_app/styles/color_theme.dart';
-
-import 'custom_text.dart';
-
 class CardNear extends StatelessWidget {
   final String title;
   final String image;

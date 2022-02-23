@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/item_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/cart_page/widgets/item_description.dart';
 import 'package:fruit_store_app/views/cart_page/widgets/item_price.dart';
-import 'package:fruit_store_app/widgets/card_fruits.dart';
 
 class ItemPage extends StatelessWidget {
   final Product? product;

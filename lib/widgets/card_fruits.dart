@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/cart_page/item_page.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
