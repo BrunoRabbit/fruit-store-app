@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
-import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/views/cart_page/bloc/rating_cubit/rating_cubit.dart';
-import 'package:fruit_store_app/widgets/custom_button.dart';
-import 'package:fruit_store_app/widgets/custom_text.dart';
-import 'package:fruit_store_app/widgets/star_icon.dart';
+import '../../../models/product.dart';
+import '../../../styles/color_theme.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_text.dart';
+import '../../../widgets/star_icon.dart';
 
 class ItemDescription extends StatelessWidget {
   final Product? product;
@@ -44,36 +40,26 @@ class ItemDescription extends StatelessWidget {
                 fontFamily: 'Inter-Bold',
               ),
             ),
-            BlocBuilder<RatingCubit, RatingState>(
-              builder: (context, state) {
-                return Row(
-                  children: [
-                    RatingBar.builder(
-                      initialRating: product!.rating,
-                      itemSize: 28,
-                      glow: false,
-                      allowHalfRating: true,
-                      itemBuilder: (context, index) {
-                        return const StarIcon();
-                      },
-                      onRatingUpdate: (value) {
-                        BlocProvider.of<RatingCubit>(context).addRating(value);
-                      },
-                      updateOnDrag: true,
+            Row(
+              children: [
+                Wrap(
+                  children: List.generate(
+                    5,
+                    (index) => StarIcon(
+                      isGoodRate: index > product!.rating - 1 ? false : true,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 6, left: 8),
-                      child: CustomText(
-                        label:
-                            '${product!.rating}', //TODO - FIX changing screens
-                        fontFamily: 'Inter-Bold',
-                        size: 18,
-                        richLabel: ' (42 reviews)',
-                      ),
-                    ),
-                  ],
-                );
-              },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, left: 8),
+                  child: CustomText(
+                    label: '${product!.rating}', //TODO - FIX changing screens
+                    fontFamily: 'Inter-Bold',
+                    size: 18,
+                    richLabel: ' (42 reviews)',
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 20,

@@ -4,8 +4,6 @@ import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
 import 'package:fruit_store_app/views/splash_page/bloc/cubit/progress_bar_cubit.dart';
 
-import 'views/cart_page/bloc/rating_cubit/rating_cubit.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -21,9 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => RatingCubit(),
-        ),
         BlocProvider(
           create: (context) => ProgressBarCubit(),
         ),

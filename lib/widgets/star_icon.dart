@@ -12,9 +12,9 @@ class StarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
+    return Icon(
       Icons.star_rate_rounded,
-      color: primaryColor,
+      color: isGoodRate ? primaryColor : Colors.grey,
     );
   }
 }
