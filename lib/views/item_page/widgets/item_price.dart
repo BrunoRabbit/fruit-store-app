@@ -50,58 +50,26 @@ class ItemPrice extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-              height: 45,
-              width: 125,
-              child: ElevatedButton(
-                child: CustomText(
-                  label: '\$${product!.price}',
-                  color: primaryColor,
-                  fontFamily: 'Inter-Bold',
-                ),
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  shadowColor: primaryColor.withOpacity(0.1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  primary: primaryColor.withOpacity(0.3),
-                ),
-                onPressed: () {},
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
             Row(
               children: [
-                Container(
-                  width: 45,
+                SizedBox(
                   height: 45,
-                  decoration: const BoxDecoration(
-                    color: primaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 6,
-                          right: 2,
-                        ),
-                        child: LikeButtonWidget(
-                          size: 28,
-                          product: product!,
-                          icon: Icons.favorite_border,
-                          secondIcon: Icons.favorite,
-                        ),
-                      ),
+                  width: 125,
+                  child: ElevatedButton(
+                    child: CustomText(
+                      label: '\$${product!.price}',
+                      color: primaryColor,
+                      fontFamily: 'Inter-Bold',
                     ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shadowColor: primaryColor.withOpacity(0.1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      primary: primaryColor.withOpacity(0.3),
+                    ),
+                    onPressed: () {},
                   ),
                 ),
                 const Spacer(),
@@ -115,6 +83,38 @@ class ItemPrice extends StatelessWidget {
                   height: 20,
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 45,
+              height: 45,
+              decoration: const BoxDecoration(
+                color: primaryColor,
+                shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 6,
+                      right: 2,
+                    ),
+                    child: LikeButtonWidget(
+                      size: 28,
+                      product: product!,
+                      icon: Icons.favorite_border,
+                      secondIcon: Icons.favorite,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

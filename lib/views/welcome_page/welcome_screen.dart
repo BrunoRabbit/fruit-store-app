@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
+import 'package:fruit_store_app/views/welcome_page/bloc/cubit/progress_bar_cubit.dart';
 import '../../styles/default_styles.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
@@ -70,24 +73,40 @@ class WelcomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                       vertical: defaultPadding * 1.8,
                     ),
-                    child: BlocBuilder<ProgressBarCubit, int>(
+                    child: BlocConsumer<ProgressBarCubit, ProgressBarState>(
+                      listener: (context, state) {
+                        if (state.currentIndex == 3) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Carregando!'),
+                              duration: Duration(seconds: 4),
+                            ),
+                          );
+                          Timer(const Duration(seconds: 2), () {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              RoutesPath.homePage,
+                              (route) => false,
+                            );
+                          });
+                        }
+                      },
                       builder: (context, state) {
                         return Row(
                           children: [
                             StepBarWidget(
-                              isCompleted: state == 1,
+                              isCompleted: state.currentIndex == 1,
                             ),
                             const SizedBox(
                               width: 10,
                             ),
                             StepBarWidget(
-                              isCompleted: state == 2,
+                              isCompleted: state.currentIndex == 2,
                             ),
                             const SizedBox(
                               width: 10,
                             ),
                             StepBarWidget(
-                              isCompleted: state == 3,
+                              isCompleted: state.currentIndex == 3,
                             ),
                             const Spacer(),
                             CustomButton(
@@ -96,11 +115,6 @@ class WelcomeScreen extends StatelessWidget {
                               onPressed: () {
                                 BlocProvider.of<ProgressBarCubit>(context)
                                     .nextWelcomeStep();
-                                if (state == 3) {
-                                  Navigator.of(context).pushNamed(
-                                    RoutesPath.homePage,
-                                  );
-                                }
                               },
                             )
                           ],

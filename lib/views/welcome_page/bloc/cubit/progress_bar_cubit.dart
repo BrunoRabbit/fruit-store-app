@@ -1,21 +1,40 @@
 import 'package:bloc/bloc.dart';
 
-class ProgressBarCubit extends Cubit<int> {
-  ProgressBarCubit() : super(1);
+part 'progress_bar_state.dart';
+
+class ProgressBarCubit extends Cubit<ProgressBarState> {
+  ProgressBarCubit()
+      : super(ProgressBarState(
+          currentIndex: 1,
+          isLastIndex: false,
+        ));
 
   void previousWelcomeStep() {
-    if (state == 1) {
+    if (state.currentIndex == 1) {
       return;
     } else {
-      emit(state - 1);
+      emit(
+        ProgressBarState(
+          currentIndex: state.currentIndex - 1,
+          isLastIndex: false,
+        ),
+      );
     }
   }
 
   void nextWelcomeStep() {
-    if (state == 3) {
-      return;
+    if (state.currentIndex == 3) {
+      ProgressBarState(
+        currentIndex: state.currentIndex,
+        isLastIndex: true,
+      );
     } else {
-      emit(state + 1);
+      emit(
+        ProgressBarState(
+          currentIndex: state.currentIndex + 1,
+          isLastIndex: false,
+        ),
+      );
     }
   }
 }

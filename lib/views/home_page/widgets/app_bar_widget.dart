@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -27,19 +28,33 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 5,
-            horizontal: 23,
-          ),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              FeatherIcons.shoppingCart,
-              color: Colors.black,
-              size: 30,
+          padding: const EdgeInsets.only(top: 5),
+          child: Badge(
+            padding: const EdgeInsets.only(
+              top: 2,
+              bottom: 8,
+              left: 15,
+            ),
+            badgeContent: Text(
+              '2',
+            ),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                FeatherIcons.shoppingCart,
+                size: 30,
+              ),
             ),
           ),
         ),
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(
+        //     FeatherIcons.shoppingCart,
+        //     color: Colors.black,
+        //     size: 30,
+        //   ),
+        // ),
       ],
       foregroundColor: Colors.black,
       elevation: 0,

@@ -38,6 +38,7 @@ dependencies:
   feather_icons: ^1.2.0
   like_button: ^2.0.4
   flutter_bloc: ^8.0.1
+  badges: ^2.0.2
 
 dev_dependencies:
   flutter_test:
