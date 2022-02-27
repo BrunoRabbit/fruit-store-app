@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Product {
   final String name;
-  final double price;
+  double price;
   final Color bgColor;
   final String image;
   final Color iconColor;

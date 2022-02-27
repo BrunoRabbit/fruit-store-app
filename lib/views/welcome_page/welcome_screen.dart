@@ -109,14 +109,15 @@ class WelcomeScreen extends StatelessWidget {
                               isCompleted: state.currentIndex == 3,
                             ),
                             const Spacer(),
-                            CustomButton(
+                            CustomButton.rounded(
+                              type: CustomButtonType.rounded,
                               width: 130,
                               label: 'Next',
-                              onPressed: () {
+                              onPress: () {
                                 BlocProvider.of<ProgressBarCubit>(context)
                                     .nextWelcomeStep();
                               },
-                            )
+                            ),
                           ],
                         );
                       },

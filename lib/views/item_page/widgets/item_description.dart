@@ -95,9 +95,10 @@ class ItemDescription extends StatelessWidget {
                   fontFamily: 'Inter-Bold',
                 ),
                 const Spacer(),
-                CustomButton(
+                CustomButton.rounded(
+                  type: CustomButtonType.rounded,
                   label: 'Add to cart',
-                  onPressed: () {},
+                  onPress: () {},
                 ),
               ],
             ),

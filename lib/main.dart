@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
 import 'routes/app_routes.dart';
 import 'views/welcome_page/bloc/cubit/progress_bar_cubit.dart';
 
@@ -13,15 +14,40 @@ final themeData = ThemeData(
   fontFamily: 'Inter-Regular',
 );
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late PriceBloc priceBloc;
+  late ProgressBarCubit progressBarCubit;
+
+  @override
+  void initState() {
+    priceBloc = PriceBloc();
+    progressBarCubit = ProgressBarCubit();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    priceBloc = PriceBloc();
+    progressBarCubit = ProgressBarCubit();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<ProgressBarCubit>(
           create: (context) => ProgressBarCubit(),
+        ),
+        BlocProvider<PriceBloc>(
+          create: (context) => PriceBloc(),
         ),
       ],
       child: MaterialApp(

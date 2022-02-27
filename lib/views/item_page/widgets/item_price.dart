@@ -1,12 +1,15 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
-class ItemPrice extends StatelessWidget {
+class ItemPrice extends StatefulWidget {
   final Product? product;
   final String subTitle;
 
@@ -15,6 +18,19 @@ class ItemPrice extends StatelessWidget {
     required this.product,
     required this.subTitle,
   }) : super(key: key);
+
+  @override
+  State<ItemPrice> createState() => _ItemPriceState();
+}
+
+class _ItemPriceState extends State<ItemPrice> {
+  late PriceBloc priceBloc;
+
+  @override
+  void initState() {
+    priceBloc = BlocProvider.of<PriceBloc>(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +42,7 @@ class ItemPrice extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              label: product!.name,
+              label: widget.product!.name,
               size: 28,
               fontFamily: 'Inter-Bold',
             ),
@@ -34,7 +50,7 @@ class ItemPrice extends StatelessWidget {
               height: 10,
             ),
             CustomText(
-              label: subTitle,
+              label: widget.subTitle,
               size: 16,
               color: Colors.black54,
               fontFamily: 'Inter-Medium',
@@ -50,39 +66,70 @@ class ItemPrice extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  height: 45,
-                  width: 125,
-                  child: ElevatedButton(
-                    child: CustomText(
-                      label: '\$${product!.price}',
-                      color: primaryColor,
-                      fontFamily: 'Inter-Bold',
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      shadowColor: primaryColor.withOpacity(0.1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+            BlocBuilder<PriceBloc, PriceState>(
+              bloc: priceBloc,
+              builder: (context, state) {
+                print(state.product);
+                print(state.index);
+                return Row(
+                  children: [
+                    SizedBox(
+                      height: 45,
+                      width: 125,
+                      child: ElevatedButton(
+                        child: CustomText(
+                          label: '\$${state.product[state.index].price}',
+                          color: primaryColor,
+                          fontFamily: 'Inter-Bold',
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shadowColor: primaryColor.withOpacity(0.1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          primary: primaryColor.withOpacity(0.3),
+                        ),
+                        onPressed: () {},
                       ),
-                      primary: primaryColor.withOpacity(0.3),
                     ),
-                    onPressed: () {},
-                  ),
-                ),
-                const Spacer(),
-                CustomButton(
-                  label: 'New',
-                  onPressed: () {},
-                  width: 100,
-                  height: 40,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
+                    const Spacer(),
+                    CustomButton.circular(
+                      child: const Icon(Icons.remove_outlined),
+                      type: CustomButtonType.circular,
+                      onPress: () {
+                        Product? newProduct = widget.product;
+                        newProduct!.price -= newProduct.price;
+                        priceBloc.add(
+                          ChangePrice(
+                            newProduct,
+                            state.index - 1,
+                          ),
+                        );
+                        print(state.index);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomButton.circular(
+                      type: CustomButtonType.circular,
+                      child: const Icon(FeatherIcons.plus),
+                      onPress: () {
+                        Product? newProduct = widget.product;
+                        newProduct!.price += newProduct.price;
+                        priceBloc.add(
+                          ChangePrice(
+                            newProduct,
+                            state.index + 1,
+                          ),
+                        );
+                        print(state.index);
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
             const SizedBox(
               height: 20,
@@ -108,7 +155,7 @@ class ItemPrice extends StatelessWidget {
                     ),
                     child: LikeButtonWidget(
                       size: 28,
-                      product: product!,
+                      product: widget.product!,
                       icon: Icons.favorite_border,
                       secondIcon: Icons.favorite,
                     ),
