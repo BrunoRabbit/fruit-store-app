@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/views/introduction_page/introduction_page.dart';
+import 'package:fruit_store_app/views/introduction_page/welcome_page/bloc/cubit/progress_bar_cubit.dart';
 import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
 import 'routes/app_routes.dart';
-import 'views/welcome_page/bloc/cubit/progress_bar_cubit.dart';
-
-import 'views/welcome_page/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: const WelcomeScreen(), //splash
+        home: const IntroductionPage(), //splash
         routes: AppRoutes.path,
       ),
     );

@@ -69,8 +69,6 @@ class _ItemPriceState extends State<ItemPrice> {
             BlocBuilder<PriceBloc, PriceState>(
               bloc: priceBloc,
               builder: (context, state) {
-                print(state.product);
-                print(state.index);
                 return Row(
                   children: [
                     SizedBox(
@@ -99,13 +97,18 @@ class _ItemPriceState extends State<ItemPrice> {
                       type: CustomButtonType.circular,
                       onPress: () {
                         Product? newProduct = widget.product;
-                        newProduct!.price -= newProduct.price;
-                        priceBloc.add(
-                          ChangePrice(
-                            newProduct,
-                            state.index - 1,
-                          ),
-                        );
+                        if (newProduct!.price >= newProduct.price) {
+                          if (state.index > 0) {
+                            newProduct.price -= newProduct.price;
+                            priceBloc.add(
+                              ChangePrice(
+                                newProduct,
+                                state.index - 1,
+                              ),
+                            );
+                          }
+                        }
+
                         print(state.index);
                       },
                     ),
@@ -117,14 +120,16 @@ class _ItemPriceState extends State<ItemPrice> {
                       child: const Icon(FeatherIcons.plus),
                       onPress: () {
                         Product? newProduct = widget.product;
-                        newProduct!.price += newProduct.price;
-                        priceBloc.add(
-                          ChangePrice(
-                            newProduct,
-                            state.index + 1,
-                          ),
-                        );
-                        print(state.index);
+                        if (newProduct!.price <= newProduct.price) {
+                          newProduct.price += newProduct.price;
+                          priceBloc.add(
+                            ChangePrice(
+                              newProduct,
+                              state.index + 1,
+                            ),
+                          );
+                        }
+                        print(newProduct.price);
                       },
                     ),
                   ],

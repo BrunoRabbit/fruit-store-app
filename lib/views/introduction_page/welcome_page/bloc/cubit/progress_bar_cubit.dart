@@ -9,21 +9,8 @@ class ProgressBarCubit extends Cubit<ProgressBarState> {
           isLastIndex: false,
         ));
 
-  void previousWelcomeStep() {
-    if (state.currentIndex == 1) {
-      return;
-    } else {
-      emit(
-        ProgressBarState(
-          currentIndex: state.currentIndex - 1,
-          isLastIndex: false,
-        ),
-      );
-    }
-  }
-
   void nextWelcomeStep() {
-    if (state.currentIndex == 3) {
+    if (state.currentIndex == 4) {
       ProgressBarState(
         currentIndex: state.currentIndex,
         isLastIndex: true,
