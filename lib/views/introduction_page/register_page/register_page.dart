@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/views/home_page/widgets/app_bar_widget.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -6,10 +7,17 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
+      appBar: AppBarWidget(
+        icon: Icons.arrow_back_rounded,
+        onPressed: () {},
+        isHomeScreen: false,
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          TextFormField(),
+          TextFormField(),
+        ],
+      ),
     );
   }
 }

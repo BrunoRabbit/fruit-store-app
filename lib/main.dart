@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: const IntroductionPage(), //splash
+        home: IntroductionPage(), //splash
         routes: AppRoutes.path,
       ),
     );

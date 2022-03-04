@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import '../../../widgets/custom_text.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  WelcomeScreen({Key? key}) : super(key: key);
-
-  final pageController = PageController(
-    initialPage: 0,
-  );
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

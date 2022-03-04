@@ -10,7 +10,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: AppBarWidget(
+        icon: Icons.menu_rounded,
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+        isHomeScreen: false,
+      ),
       drawer: const Drawer(), // TODO - Implements Drawer
       body: SingleChildScrollView(
         child: Padding(

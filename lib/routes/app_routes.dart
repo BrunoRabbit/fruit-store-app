@@ -11,7 +11,7 @@ class AppRoutes {
     RoutesPath.itemPage: (_) => const ItemPage(),
     RoutesPath.cartPage: (_) => const CartPage(),
     RoutesPath.registerPage: (_) => const RegisterPage(),
-    RoutesPath.introductionPage: (_) => const IntroductionPage(),
+    RoutesPath.introductionPage: (_) => IntroductionPage(),
   };
 }
 

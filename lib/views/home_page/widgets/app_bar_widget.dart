@@ -5,10 +5,16 @@ import 'package:flutter/material.dart';
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
+  final IconData icon;
+  final VoidCallback onPressed;
+  final bool isHomeScreen;
 
   const AppBarWidget({
     Key? key,
     this.preferredSize = const Size.fromHeight(50.0),
+    required this.icon,
+    required this.onPressed,
+    required this.isHomeScreen,
   }) : super(key: key);
 
   @override
@@ -16,45 +22,37 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leadingWidth: 98,
       leading: IconButton(
-        icon: const Icon(
-          Icons.menu_rounded,
-          color: Colors.black,
+        icon: Icon(
+          icon,
           size: 35,
+          color: Colors.black87,
         ),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
+        onPressed: onPressed,
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Badge(
-            padding: const EdgeInsets.only(
-              top: 2,
-              bottom: 8,
-              left: 15,
-            ),
-            badgeContent: Text(
-              '2',
-            ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                FeatherIcons.shoppingCart,
-                size: 30,
-              ),
-            ),
-          ),
-        ),
-        // IconButton(
-        //   onPressed: () {},
-        //   icon: const Icon(
-        //     FeatherIcons.shoppingCart,
-        //     color: Colors.black,
-        //     size: 30,
-        //   ),
-        // ),
+        isHomeScreen
+            ? Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Badge(
+                  padding: const EdgeInsets.only(
+                    top: 2,
+                    bottom: 8,
+                    left: 15,
+                  ),
+                  badgeContent: const Text(
+                    '2',
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      FeatherIcons.shoppingCart,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              )
+            : Container(),
       ],
       foregroundColor: Colors.black,
       elevation: 0,
