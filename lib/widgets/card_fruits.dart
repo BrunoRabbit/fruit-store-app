@@ -19,6 +19,7 @@ class CardFruits extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
+            // TODO - CHANGE TO PUSH NAMED
             MaterialPageRoute(
               builder: (_) => ItemPage(
                 product: product,

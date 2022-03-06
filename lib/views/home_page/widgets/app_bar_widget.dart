@@ -24,7 +24,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(
           icon,
-          size: 35,
+          size: 33,
           color: Colors.black87,
         ),
         onPressed: onPressed,

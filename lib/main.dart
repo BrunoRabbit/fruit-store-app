@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/controllers/main_controller.dart';
 import 'package:fruit_store_app/views/introduction_page/introduction_page.dart';
-import 'package:fruit_store_app/views/introduction_page/welcome_page/bloc/cubit/progress_bar_cubit.dart';
 import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
+import 'package:fruit_store_app/views/welcome_page/bloc/progress_bar_bloc.dart';
 import 'routes/app_routes.dart';
 
 void main() {
@@ -21,20 +22,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late PriceBloc priceBloc;
-  late ProgressBarCubit progressBarCubit;
-
   @override
   void initState() {
-    priceBloc = PriceBloc();
-    progressBarCubit = ProgressBarCubit();
     super.initState();
+    priceBloc = PriceBloc();
+    progressBarBloc = ProgressBarBloc();
   }
 
   @override
   void dispose() {
-    priceBloc = PriceBloc();
-    progressBarCubit = ProgressBarCubit();
+    priceBloc.close();
+    progressBarBloc.close();
     super.dispose();
   }
 
@@ -42,8 +40,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ProgressBarCubit>(
-          create: (context) => ProgressBarCubit(),
+        BlocProvider<ProgressBarBloc>(
+          create: (context) => ProgressBarBloc(),
         ),
         BlocProvider<PriceBloc>(
           create: (context) => PriceBloc(),
@@ -53,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
-        home: IntroductionPage(), //splash
+        home: const IntroductionPage(), //splash
         routes: AppRoutes.path,
       ),
     );

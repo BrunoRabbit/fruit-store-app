@@ -1,11 +1,11 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/controllers/main_controller.dart';
 import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
-import 'package:fruit_store_app/views/introduction_page/welcome_page/bloc/cubit/progress_bar_cubit.dart';
-import 'package:fruit_store_app/views/introduction_page/welcome_page/widgets/step_bar_widget.dart';
+import 'package:fruit_store_app/views/welcome_page/bloc/progress_bar_bloc.dart';
+import 'package:fruit_store_app/views/welcome_page/bloc/progress_bar_state.dart';
+import 'package:fruit_store_app/views/welcome_page/widgets/step_bar_widget.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
-import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/styles/default_styles.dart';
 
 class IntroductionPage extends StatefulWidget {
@@ -22,62 +22,50 @@ class _IntroductionPageState extends State<IntroductionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _controller.pageController,
-                itemCount: _controller.listScreens.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Stack(
-                    alignment: Alignment.topLeft,
-                    children: [_controller.listScreens[index]],
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: defaultPadding * 1.8,
-                horizontal: defaultPadding,
-              ),
-              child: BlocConsumer<ProgressBarCubit, ProgressBarState>(
-                listener: (context, state) {
-                  if (state.currentIndex == 4) {
-                    print('Go Ahead');
-                    // ScaffoldMessenger.of(context).showSnackBar(
-                    //   const SnackBar(
-                    //     content: Text('Carregando!'),
-                    //     duration: Duration(seconds: 4),
-                    //   ),
-                    // );
-                    // Timer(const Duration(seconds: 2), () {
-                    //   Navigator.of(context).pushNamedAndRemoveUntil(
-                    //     RoutesPath.homePage,
-                    //     (route) => false,
-                    //   );
-                    // });
-                  }
-                },
-                builder: (context, state) {
-                  return Row(
+        child: BlocConsumer<ProgressBarBloc, ProgressBarState>(
+          bloc: progressBarBloc,
+          listener: (context, state) {
+            print('go ahead');
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   const SnackBar(
+            //     content: Text('Carregando!'),
+            //     duration: Duration(seconds: 4),
+            //   ),
+            // );
+            // Timer(const Duration(seconds: 2), () {
+            //   Navigator.of(context).pushNamedAndRemoveUntil(
+            //     RoutesPath.homePage,
+            //     (route) => false,
+            //   );
+            // });
+          },
+          builder: (context, state) {
+            return Column(
+              children: [
+                Expanded(
+                  child: _controller.listScreens[state.step],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: defaultPadding * 1.8,
+                    horizontal: defaultPadding,
+                  ),
+                  child: Row(
                     children: [
                       StepBarWidget(
-                        isCompleted: state.currentIndex == 1,
+                        isCompleted: state.step == 0,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       StepBarWidget(
-                        isCompleted: state.currentIndex == 2,
+                        isCompleted: state.step == 1,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       StepBarWidget(
-                        isCompleted:
-                            state.currentIndex == 3 || state.currentIndex == 4,
+                        isCompleted: state.step == 2,
                       ),
                       const Spacer(),
                       CustomButton.rounded(
@@ -85,25 +73,17 @@ class _IntroductionPageState extends State<IntroductionPage> {
                         width: 130,
                         label: 'Next',
                         onPress: () {
-                          BlocProvider.of<ProgressBarCubit>(context)
-                              .nextWelcomeStep();
-                          if (_controller.pageController.hasClients) {
-                            if (state.currentIndex <= 3) {
-                              _controller.pageController.animateToPage(
-                                state.currentIndex,
-                                duration: const Duration(milliseconds: 400),
-                                curve: Curves.easeInOutQuart,
-                              );
-                            }
-                          }
+                          progressBarBloc.add(
+                            ChangeStepBarEvent(state.step + 1),
+                          );
                         },
                       ),
                     ],
-                  );
-                },
-              ),
-            ),
-          ],
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
