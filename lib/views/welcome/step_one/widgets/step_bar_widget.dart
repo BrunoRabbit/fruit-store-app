@@ -12,8 +12,8 @@ class StepBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: 6,
-      width: isCompleted ? 35 : 30,
+      height: isCompleted ? 6 : 5,
+      width: isCompleted ? 30 : 20,
       decoration: BoxDecoration(
         color: isCompleted ? Colors.black87 : Colors.grey[400],
         borderRadius: BorderRadius.circular(

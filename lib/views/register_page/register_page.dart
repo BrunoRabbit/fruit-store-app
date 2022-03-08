@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_store_app/controllers/main_controller.dart';
 import 'package:fruit_store_app/controllers/register_page_controller.dart';
+import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/home_page/widgets/app_bar_widget.dart';
-import 'package:fruit_store_app/views/welcome_page/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/widgets/custom_text_form_field.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -17,7 +16,9 @@ class RegisterPage extends StatelessWidget {
         icon: Icons.arrow_back_rounded,
         isHomeScreen: false,
         onPressed: () {
-          progressBarBloc.add(ChangeStepBarEvent(0));
+          Navigator.of(context).pop(
+            RoutesPath.introductionPage,
+          );
         },
       ),
       body: Column(
