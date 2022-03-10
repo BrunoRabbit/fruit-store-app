@@ -5,11 +5,13 @@ import 'package:fruit_store_app/styles/color_theme.dart';
 class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final bool isNeedContrast;
 
   const CustomTextFormField({
     Key? key,
     required this.hintText,
     required this.controller,
+    this.isNeedContrast = false,
   }) : super(key: key);
 
   @override
@@ -22,15 +24,15 @@ class CustomTextFormField extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controller,
-        cursorColor: Colors.black87,
+        cursorColor: isNeedContrast ? Colors.white : Colors.black87,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(
-            color: Colors.black54,
+          hintStyle: TextStyle(
+            color: isNeedContrast ? Colors.white : Colors.black54,
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.black87,
+            borderSide: BorderSide(
+              color: isNeedContrast ? Colors.white : Colors.black87,
               width: 3.0,
             ),
             borderRadius: BorderRadius.circular(8),

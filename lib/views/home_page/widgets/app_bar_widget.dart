@@ -8,6 +8,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final IconData icon;
   final VoidCallback onPressed;
   final bool isHomeScreen;
+  final bool isNeedContrast;
 
   const AppBarWidget({
     Key? key,
@@ -15,6 +16,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     required this.icon,
     required this.onPressed,
     required this.isHomeScreen,
+    this.isNeedContrast = false,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         icon: Icon(
           icon,
           size: 33,
-          color: Colors.black87,
+          color: isNeedContrast ? Colors.white : Colors.black87,
         ),
         onPressed: onPressed,
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,

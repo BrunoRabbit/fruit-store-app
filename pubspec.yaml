@@ -39,6 +39,9 @@ dependencies:
   like_button: ^2.0.4
   flutter_bloc: ^8.0.1
   badges: ^2.0.2
+  firebase_auth: ^3.3.10
+  firebase_core: ^1.13.1
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:

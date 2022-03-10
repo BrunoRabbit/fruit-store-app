@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
@@ -5,7 +6,9 @@ import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.da
 import 'package:fruit_store_app/views/welcome/welcome_page.dart';
 import 'routes/app_routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -53,6 +56,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: themeData,
+
         home: const WelcomePage(), //splash
         routes: AppRoutes.path,
       ),
