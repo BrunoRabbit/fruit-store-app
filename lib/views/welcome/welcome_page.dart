@@ -1,10 +1,10 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_state.dart';
-import 'package:fruit_store_app/views/welcome/step_one/widgets/step_bar_widget.dart';
+import 'package:fruit_store_app/views/welcome/widgets/step_bar_section.dart';
+import 'package:fruit_store_app/views/welcome/widgets/step_bar_widget.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/styles/default_styles.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
@@ -30,22 +30,8 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocConsumer<ProgressBarBloc, ProgressBarState>(
+        child: BlocBuilder<ProgressBarBloc, ProgressBarState>(
           bloc: progressBarBloc,
-          listener: (context, state) {
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   const SnackBar(
-            //     content: Text('Carregando!'),
-            //     duration: Duration(seconds: 4),
-            //   ),
-            // );
-            // Timer(const Duration(seconds: 2), () {
-            //   Navigator.of(context).pushNamedAndRemoveUntil(
-            //     RoutesPath.homePage,
-            //     (route) => false,
-            //   );
-            // });
-          },
           builder: (context, state) {
             return Column(
               children: [
@@ -72,24 +58,28 @@ class _WelcomePageState extends State<WelcomePage> {
                                 size: 15,
                               ),
                             )
-                          : Container(),
-                      const Spacer(),
-                      StepBarWidget(
-                        isCompleted: state.step == 0,
+                          : GestureDetector(
+                              onTap: () {},
+                              child: const CustomText(
+                                label: '',
+                                color: Colors.black87,
+                                fontFamily: 'Inter-Bold',
+                                size: 15,
+                              ),
+                            ),
+                      const Spacer(
+                        flex: 3,
                       ),
-                      const SizedBox(
-                        width: 10,
+                      StepBarSection(
+                        currentIndex: state.step,
                       ),
-                      StepBarWidget(
-                        isCompleted: state.step == 1,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      StepBarWidget(
-                        isCompleted: state.step == 2,
-                      ),
-                      const Spacer(),
+                      state.step != 2
+                          ? const Spacer(
+                              flex: 1,
+                            )
+                          : const Spacer(
+                              flex: 3,
+                            ),
                       state.step != 2
                           ? CustomButton.rounded(
                               type: CustomButtonType.rounded,
@@ -102,6 +92,19 @@ class _WelcomePageState extends State<WelcomePage> {
                               },
                             )
                           : Container(),
+                      state.step == 2
+                          ? const SizedBox(
+                              width: 25,
+                            )
+                          : Container(),
+                      // : CustomButton.rounded(
+                      //     type: CustomButtonType.rounded,
+                      //     btnColor: Colors.transparent,
+                      //     width: 120,
+                      //     height: 40,
+                      //     label: ' ',
+                      //     onPress: () {},
+                      //   ),
                     ],
                   ),
                 ),

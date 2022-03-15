@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/styles/default_styles.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
@@ -7,15 +8,18 @@ class SearchFruits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(
           height: 20,
         ),
-        const CustomText(
+        CustomText(
           fontFamily: 'Inter-Bold',
-          label: 'Welcome \$user,',
+          label:
+              'Welcome, ${user.displayName![0].toUpperCase()}${user.displayName!.substring(1).toLowerCase()}.',
           size: 30,
         ),
         const SizedBox(

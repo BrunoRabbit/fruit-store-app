@@ -6,12 +6,16 @@ class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final bool isNeedContrast;
+  final String? Function(String?)? validator;
+  final bool isObscureText;
 
   const CustomTextFormField({
     Key? key,
     required this.hintText,
     required this.controller,
     this.isNeedContrast = false,
+    this.validator,
+    required this.isObscureText,
   }) : super(key: key);
 
   @override
@@ -23,12 +27,28 @@ class CustomTextFormField extends StatelessWidget {
         top: 15,
       ),
       child: TextFormField(
+        obscureText: isObscureText,
         controller: controller,
+        validator: validator,
         cursorColor: isNeedContrast ? Colors.white : Colors.black87,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
             color: isNeedContrast ? Colors.white : Colors.black54,
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: isNeedContrast ? Colors.white : Colors.red,
+              width: 3.0,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: isNeedContrast ? Colors.white : Colors.red,
+              width: 3.0,
+            ),
+            borderRadius: BorderRadius.circular(8),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(

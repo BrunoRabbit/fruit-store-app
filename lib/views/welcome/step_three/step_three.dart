@@ -39,7 +39,6 @@ class _StepThreeState extends State<StepThree> {
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 28,
-          vertical: 18,
         ),
         child: Column(
           children: [
@@ -51,7 +50,7 @@ class _StepThreeState extends State<StepThree> {
             ),
             // StorySet
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             const SizedBox(
               width: double.infinity,
@@ -85,7 +84,7 @@ class _StepThreeState extends State<StepThree> {
               type: CustomButtonType.rounded,
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             const CustomText(
               label: 'or',
@@ -93,7 +92,7 @@ class _StepThreeState extends State<StepThree> {
               size: 16,
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             CustomButton.rounded(
               label: 'Register',
