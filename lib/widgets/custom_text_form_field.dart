@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:fruit_store_app/styles/color_theme.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -8,6 +7,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool isNeedContrast;
   final String? Function(String?)? validator;
   final bool isObscureText;
+  final bool isPassword;
+  final Widget? suffixIcon;
 
   const CustomTextFormField({
     Key? key,
@@ -16,6 +17,8 @@ class CustomTextFormField extends StatelessWidget {
     this.isNeedContrast = false,
     this.validator,
     required this.isObscureText,
+    this.isPassword = false,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -30,37 +33,42 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: isObscureText,
         controller: controller,
         validator: validator,
-        cursorColor: isNeedContrast ? Colors.white : Colors.black87,
+        cursorColor: isNeedContrast ? Colors.white : Colors.black54,
         decoration: InputDecoration(
+          errorStyle: const TextStyle(
+            fontFamily: 'Inter-Medium',
+            fontSize: 12,
+          ),
           hintText: hintText,
           hintStyle: TextStyle(
             color: isNeedContrast ? Colors.white : Colors.black54,
           ),
+          suffixIcon: suffixIcon,
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: isNeedContrast ? Colors.white : Colors.red,
-              width: 3.0,
+              width: 2.0,
             ),
             borderRadius: BorderRadius.circular(8),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: isNeedContrast ? Colors.white : Colors.red,
-              width: 3.0,
+              width: 2.0,
             ),
             borderRadius: BorderRadius.circular(8),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: isNeedContrast ? Colors.white : Colors.black87,
-              width: 3.0,
+              color: isNeedContrast ? Colors.white : Colors.black54,
+              width: 2.0,
             ),
             borderRadius: BorderRadius.circular(8),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: primaryColor,
-              width: 3.0,
+              width: 2.0,
             ),
             borderRadius: BorderRadius.circular(8),
           ),

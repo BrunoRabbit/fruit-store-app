@@ -59,14 +59,14 @@ class _StepTwoState extends State<StepTwo> {
               width: double.infinity,
               child: CustomText(
                 label:
-                    'You can see the distance, and how much people like the store',
+                    'You can see the distance between the store and you, and how much people like her',
                 fontFamily: 'Inter-Medium',
                 size: 18,
                 color: Colors.black87,
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
           ],
         ),

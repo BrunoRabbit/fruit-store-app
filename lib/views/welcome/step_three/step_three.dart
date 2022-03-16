@@ -50,7 +50,7 @@ class _StepThreeState extends State<StepThree> {
             ),
             // StorySet
             const SizedBox(
-              height: 5,
+              height: 15,
             ),
             const SizedBox(
               width: double.infinity,

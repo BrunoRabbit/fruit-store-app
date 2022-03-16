@@ -1,10 +1,7 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/data/repositories/auth_repository.dart';
-import 'package:fruit_store_app/models/auth_detail_model.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

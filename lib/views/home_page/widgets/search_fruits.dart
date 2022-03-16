@@ -9,7 +9,6 @@ class SearchFruits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,8 +17,9 @@ class SearchFruits extends StatelessWidget {
         ),
         CustomText(
           fontFamily: 'Inter-Bold',
-          label:
-              'Welcome, ${user.displayName![0].toUpperCase()}${user.displayName!.substring(1).toLowerCase()}.',
+          label: user.displayName != null
+              ? 'Welcome, ${user.displayName![0].toUpperCase()}${user.displayName!.substring(1).toLowerCase()}.'
+              : 'Welcome, user!',
           size: 30,
         ),
         const SizedBox(

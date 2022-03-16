@@ -1,11 +1,10 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_state.dart';
 import 'package:fruit_store_app/views/welcome/widgets/step_bar_section.dart';
-import 'package:fruit_store_app/views/welcome/widgets/step_bar_widget.dart';
-import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/styles/default_styles.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
@@ -61,50 +60,29 @@ class _WelcomePageState extends State<WelcomePage> {
                           : GestureDetector(
                               onTap: () {},
                               child: const CustomText(
-                                label: '',
-                                color: Colors.black87,
+                                label: 'Skip',
+                                color: Colors.transparent,
                                 fontFamily: 'Inter-Bold',
                                 size: 15,
                               ),
                             ),
-                      const Spacer(
-                        flex: 3,
-                      ),
-                      StepBarSection(
-                        currentIndex: state.step,
-                      ),
+                      const Spacer(),
+                      StepBarSection(currentIndex: state.step),
+                      const Spacer(),
                       state.step != 2
-                          ? const Spacer(
-                              flex: 1,
+                          ? GestureDetector(
+                              onTap: () => progressBarBloc.add(
+                                ChangeStepBarEvent(state.step + 1),
+                              ),
+                              child: const Icon(FeatherIcons.arrowRight),
                             )
-                          : const Spacer(
-                              flex: 3,
+                          : GestureDetector(
+                              onTap: () {},
+                              child: const Icon(
+                                FeatherIcons.arrowRight,
+                                color: Colors.transparent,
+                              ),
                             ),
-                      state.step != 2
-                          ? CustomButton.rounded(
-                              type: CustomButtonType.rounded,
-                              width: 120,
-                              label: 'Next',
-                              onPress: () {
-                                progressBarBloc.add(
-                                  ChangeStepBarEvent(state.step + 1),
-                                );
-                              },
-                            )
-                          : Container(),
-                      state.step == 2
-                          ? const SizedBox(
-                              width: 25,
-                            )
-                          : Container(),
-                      // : CustomButton.rounded(
-                      //     type: CustomButtonType.rounded,
-                      //     btnColor: Colors.transparent,
-                      //     width: 120,
-                      //     height: 40,
-                      //     label: ' ',
-                      //     onPress: () {},
-                      //   ),
                     ],
                   ),
                 ),
