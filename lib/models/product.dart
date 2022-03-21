@@ -8,6 +8,7 @@ class Product {
   final Color iconColor;
   bool isFavorite;
   final double rating;
+  int qtdd;
 
   Product({
     Key? key,
@@ -18,6 +19,7 @@ class Product {
     required this.iconColor,
     this.isFavorite = false,
     required this.rating,
+    required this.qtdd,
   });
 
   Future<bool> toggleFavorite() async {

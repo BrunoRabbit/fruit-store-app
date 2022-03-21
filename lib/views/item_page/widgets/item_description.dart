@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/views/cart_page/cart_page.dart';
 import '../../../models/product.dart';
 import '../../../styles/color_theme.dart';
 import '../../../widgets/custom_button.dart';
@@ -98,7 +99,17 @@ class ItemDescription extends StatelessWidget {
                 CustomButton.rounded(
                   type: CustomButtonType.rounded,
                   label: 'Add to cart',
-                  onPress: () {},
+                  onPress: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return CartPage(
+                            product: product,
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

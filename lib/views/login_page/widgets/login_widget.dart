@@ -93,6 +93,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               CustomTextFormField(
                 isObscureText: false,
+                autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   return value != null && !EmailValidator.validate(value)
                       ? 'Enter a valid email'
@@ -103,6 +104,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               CustomTextFormField(
                 isObscureText: true,
+                autofillHints: const [AutofillHints.password],
                 validator: (value) {
                   return value != null && value.length < 6
                       ? "Enter min. 6 characters"

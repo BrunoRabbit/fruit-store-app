@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_store_app/routes/login_page_route_transition.dart';
 import 'package:fruit_store_app/routes/register_page_route_transition.dart';
 import 'package:fruit_store_app/views/home_page/widgets/app_bar_widget.dart';
-import 'package:fruit_store_app/views/register_page/register_page.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';

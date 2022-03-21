@@ -18,7 +18,6 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
-  late final TextEditingController _controllerUsername;
   late final TextEditingController _controllerEmail;
   late final TextEditingController _controllerPassword;
   final _formKey = GlobalKey<FormState>();
@@ -124,13 +123,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     },
                     suffixIcon: InkWell(
                       onTap: () {
-                        setState(() {
-                          _passwordBloc.add(
-                            ChangeVisibility(
-                              !state.isObscureText,
-                            ),
-                          );
-                        });
+                        _passwordBloc.add(
+                          ChangeVisibility(
+                            !state.isObscureText,
+                          ),
+                        );
                       },
                       child: state.isObscureText
                           ? const Icon(FeatherIcons.eyeOff)

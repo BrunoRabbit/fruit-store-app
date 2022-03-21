@@ -1,13 +1,28 @@
-part of 'price_bloc.dart';
+// part of 'price_bloc.dart';
 
-abstract class PriceEvent {}
+// class PriceEvent extends Equatable {
+//   @override
+//   List<Object?> get props => [];
+// }
 
-class ChangePrice extends PriceEvent {
-  Product product;
-  int index;
+// class IncrementPrice extends PriceEvent {
+//   final String name;
 
-  ChangePrice(
-    this.product,
-    this.index,
-  );
-}
+//   IncrementPrice(
+//     this.name,
+//   );
+
+//   @override
+//   List<Object?> get props => [name];
+// }
+
+// class DecrementPrice extends PriceEvent {
+//   final String name;
+
+//   DecrementPrice(
+//     this.name,
+//   );
+
+//   @override
+//   List<Object?> get props => [name];
+// }

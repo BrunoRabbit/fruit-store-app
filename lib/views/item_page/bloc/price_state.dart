@@ -1,11 +1,20 @@
-part of 'price_bloc.dart';
+// part of 'price_bloc.dart';
 
-class PriceState {
-  List<Product> product;
-  int index;
+// class PriceState extends Equatable {
+//   final List<Product> product;
 
-  PriceState({
-    required this.product,
-    required this.index,
-  });
-}
+//   const PriceState({
+//     required this.product,
+//   });
+
+//   @override
+//   List<Object?> get props => [product];
+
+//   PriceState copyWith({
+//     List<Product>? product,
+//   }) {
+//     return PriceState(
+//       product: product ?? this.product,
+//     );
+//   }
+// }

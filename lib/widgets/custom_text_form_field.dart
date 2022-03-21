@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:fruit_store_app/styles/color_theme.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool isObscureText;
   final bool isPassword;
   final Widget? suffixIcon;
+  final Iterable<String>? autofillHints;
 
   const CustomTextFormField({
     Key? key,
@@ -19,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.isObscureText,
     this.isPassword = false,
     this.suffixIcon,
+    this.autofillHints,
   }) : super(key: key);
 
   @override
@@ -34,6 +37,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         validator: validator,
         cursorColor: isNeedContrast ? Colors.white : Colors.black54,
+        autofillHints: autofillHints,
         decoration: InputDecoration(
           errorStyle: const TextStyle(
             fontFamily: 'Inter-Medium',

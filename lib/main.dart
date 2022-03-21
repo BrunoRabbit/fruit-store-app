@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/blocs/bloc/auth_bloc.dart';
 import 'package:fruit_store_app/data/repositories/auth_repository.dart';
+import 'package:fruit_store_app/views/home_page/home_page.dart';
 import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
 import 'package:fruit_store_app/views/register_page/bloc/password_visibility_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
@@ -29,20 +30,20 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late ProgressBarBloc progressBarBloc;
-  late PriceBloc priceBloc;
+  // late PriceBloc priceBloc;
   late PasswordVisibilityBloc passwordVisibilityBloc;
 
   @override
   void initState() {
     super.initState();
     passwordVisibilityBloc = PasswordVisibilityBloc();
-    priceBloc = PriceBloc();
+    // priceBloc = PriceBloc();
     progressBarBloc = ProgressBarBloc();
   }
 
   @override
   void dispose() {
-    priceBloc.close();
+    // priceBloc.close();
     progressBarBloc.close();
     passwordVisibilityBloc.close();
     super.dispose();
@@ -67,9 +68,9 @@ class _MyAppState extends State<MyApp> {
           BlocProvider<ProgressBarBloc>(
             create: (context) => ProgressBarBloc(),
           ),
-          BlocProvider<PriceBloc>(
-            create: (context) => PriceBloc(),
-          ),
+          // BlocProvider<PriceBloc>(
+          //   create: (context) => PriceBloc(),
+          // ),
           BlocProvider<PasswordVisibilityBloc>(
             create: (context) => PasswordVisibilityBloc(),
           ),
@@ -79,7 +80,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: themeData,
 
-          home: const WelcomePage(), //welcome
+          home: const HomePage(), //welcome
           routes: AppRoutes.path,
         ),
       ),
