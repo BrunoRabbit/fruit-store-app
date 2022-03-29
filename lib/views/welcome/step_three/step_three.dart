@@ -49,7 +49,7 @@ class _StepThreeState extends State<StepThree> {
             ),
             // StorySet
             const SizedBox(
-              height: 15,
+              height: 25,
             ),
             const SizedBox(
               width: double.infinity,
@@ -71,7 +71,7 @@ class _StepThreeState extends State<StepThree> {
               size: 18,
             ),
             const SizedBox(
-              height: 20,
+              height: 25,
             ),
             CustomButton.rounded(
               label: 'Login',

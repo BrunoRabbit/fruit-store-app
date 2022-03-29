@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_store_app/views/cart_page/cart_page.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
 import 'package:fruit_store_app/views/welcome/welcome_page.dart';
 import 'package:fruit_store_app/views/item_page/item_page.dart';

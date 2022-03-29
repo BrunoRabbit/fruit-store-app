@@ -1,8 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepository {
   final _authFirebase = FirebaseAuth.instance;
+
+  Future<void> userSetup({required String displayName}) async {
+    CollectionReference users = FirebaseFirestore.instance.collection('Users');
+
+    String uid = _authFirebase.currentUser!.uid;
+
+    users.add({'displayName': displayName, 'uid': uid});
+    return;
+  }
 
   Future<void> signUp({required String email, required String password}) async {
     try {
@@ -10,12 +20,12 @@ class AuthRepository {
           .createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw Exception('The password provided is too weak.');
+        throw Exception('A senha é muito fraca');
       } else if (e.code == 'email-already-in-use') {
-        throw Exception('The account already exists for that email.');
+        throw Exception('A conta já existe com esse email.');
       }
     } catch (e) {
-      throw Exception(e.toString());
+      throw Exception('Operação inválida, usuário já existe');
     }
   }
 
@@ -25,9 +35,9 @@ class AuthRepository {
           .signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        throw Exception('No user found for that email.');
+        throw Exception('Nenhum usuario encontrado com esse email.');
       } else if (e.code == 'wrong-password') {
-        throw Exception('Wrong password provided for that user.');
+        throw Exception('A senha está incorreta!');
       }
     }
   }
@@ -46,7 +56,7 @@ class AuthRepository {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
     } catch (e) {
-      throw Exception(e.toString());
+      throw Exception('Algo deu errado!');
     }
   }
 

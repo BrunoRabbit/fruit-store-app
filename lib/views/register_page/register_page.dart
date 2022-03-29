@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_store_app/blocs/bloc/auth_bloc.dart';
+import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
@@ -19,15 +18,15 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(
-        icon: Icons.arrow_back_rounded,
-        isHomeScreen: false,
-        onPressed: () {
-          Navigator.of(context).pop(
-            RoutesPath.introductionPage,
-          );
-        },
-      ),
+      // appBar: AppBarWidget(
+      //   icon: Icons.arrow_back_rounded,
+      //   isHomeScreen: false,
+      // onPressed: () {
+      //   Navigator.of(context).pop(
+      //     RoutesPath.introductionPage,
+      //   );
+      // },
+      // ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {

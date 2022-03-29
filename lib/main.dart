@@ -1,11 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_store_app/blocs/bloc/auth_bloc.dart';
-import 'package:fruit_store_app/data/repositories/auth_repository.dart';
-import 'package:fruit_store_app/views/home_page/home_page.dart';
-import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
-import 'package:fruit_store_app/views/register_page/bloc/password_visibility_bloc.dart';
+import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
+import 'package:fruit_store_app/repositories/auth_repository.dart';
+import 'package:fruit_store_app/views/register_page/pass_visibility/password_visibility_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/views/welcome/welcome_page.dart';
 import 'routes/app_routes.dart';
@@ -30,20 +28,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late ProgressBarBloc progressBarBloc;
-  // late PriceBloc priceBloc;
   late PasswordVisibilityBloc passwordVisibilityBloc;
 
   @override
   void initState() {
     super.initState();
     passwordVisibilityBloc = PasswordVisibilityBloc();
-    // priceBloc = PriceBloc();
     progressBarBloc = ProgressBarBloc();
   }
 
   @override
   void dispose() {
-    // priceBloc.close();
     progressBarBloc.close();
     passwordVisibilityBloc.close();
     super.dispose();
@@ -51,11 +46,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // `To access the AuthRepository in the UI
-    // we need to wrap the MaterialApp around RepositoryProvider.`
-
-    // `To access the States and Events of the bloc
-    // we need to wrap the MaterialApp around BlocProvider.`
     return RepositoryProvider(
       create: (context) => AuthRepository(),
       child: MultiBlocProvider(
@@ -68,9 +58,6 @@ class _MyAppState extends State<MyApp> {
           BlocProvider<ProgressBarBloc>(
             create: (context) => ProgressBarBloc(),
           ),
-          // BlocProvider<PriceBloc>(
-          //   create: (context) => PriceBloc(),
-          // ),
           BlocProvider<PasswordVisibilityBloc>(
             create: (context) => PasswordVisibilityBloc(),
           ),
@@ -79,8 +66,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: themeData,
-
-          home: const HomePage(), //welcome
+          home: const WelcomePage(),
           routes: AppRoutes.path,
         ),
       ),
