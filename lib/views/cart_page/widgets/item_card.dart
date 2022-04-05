@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/views/item_page/item_page.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
-class CardFruits extends StatelessWidget {
+class ItemCard extends StatelessWidget {
   final Product product;
   final double width;
   final double height;
 
-  const CardFruits({
+  const ItemCard({
     Key? key,
     required this.product,
     this.width = 150,
@@ -19,24 +18,20 @@ class CardFruits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, right: 25),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            // TODO - CHANGE TO PUSH NAMED
-            MaterialPageRoute(
-              builder: (_) => ItemPage(
-                product: product,
-              ),
-            ),
-          );
-        },
+      padding: const EdgeInsets.only(right: 25),
+      child: Card(
+        elevation: 5,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
         child: Container(
           width: width,
           height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: product.bgColor,
+            color: Colors.grey[200],
           ),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -46,16 +41,6 @@ class CardFruits extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
-                  label: product.name,
-                  size: 18,
-                  fontFamily: 'Inter-Bold',
-                ),
-                CustomText(
-                  label: '\$${product.price} each',
-                  size: 14,
-                  fontFamily: 'Inter-Bold',
-                ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
@@ -65,6 +50,23 @@ class CardFruits extends StatelessWidget {
                       width: 120,
                     ),
                   ),
+                ),
+                Row(
+                  children: [
+                    CustomText(
+                      label: product.name,
+                      size: 18,
+                      fontFamily: 'Inter-Bold',
+                    ),
+                    product.isFavorite
+                        ? const Icon(Icons.favorite)
+                        : const Icon(Icons.favorite_border),
+                  ],
+                ),
+                CustomText(
+                  label: '\$${product.price} each',
+                  size: 14,
+                  fontFamily: 'Inter-Bold',
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

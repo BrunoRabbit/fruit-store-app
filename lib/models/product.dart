@@ -21,8 +21,4 @@ class Product {
     required this.rating,
     required this.qtdd,
   });
-
-  Future<bool> toggleFavorite() async {
-    return isFavorite = !isFavorite;
-  }
 }

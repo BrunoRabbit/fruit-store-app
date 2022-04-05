@@ -1,11 +1,6 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/views/item_page/bloc/price_bloc.dart';
-import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/like_button_widget.dart';
 
@@ -19,14 +14,6 @@ class ItemPrice extends StatelessWidget {
     required this.subTitle,
   }) : super(key: key);
 
-  // late PriceBloc _priceBloc;
-
-  // @override
-  // void initState() {
-  //   _priceBloc = BlocProvider.of<PriceBloc>(context);
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -38,7 +25,7 @@ class ItemPrice extends StatelessWidget {
           children: [
             CustomText(
               label: product.name,
-              size: 28,
+              size: 33,
               fontFamily: 'Inter-Bold',
             ),
             const SizedBox(
@@ -46,7 +33,7 @@ class ItemPrice extends StatelessWidget {
             ),
             CustomText(
               label: subTitle,
-              size: 16,
+              size: 18,
               color: Colors.black54,
               fontFamily: 'Inter-Medium',
             ),

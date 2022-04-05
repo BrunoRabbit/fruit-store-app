@@ -22,8 +22,8 @@ class LikeButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LikeButton(
       size: size,
-      onTap: (_) {
-        return product.toggleFavorite();
+      onTap: (_) async {
+        return product.isFavorite = !product.isFavorite;
       },
       isLiked: product.isFavorite,
       likeBuilder: (isLiked) {

@@ -17,7 +17,12 @@ class ItemDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: primaryColor.withOpacity(0.1),
+      decoration: BoxDecoration(
+        color: primaryColor.withOpacity(0.1),
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: Column(
@@ -104,7 +109,7 @@ class ItemDescription extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) {
                           return CartPage(
-                            product: product,
+                            product: product!,
                           );
                         },
                       ),

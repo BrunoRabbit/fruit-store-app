@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
+import 'package:fruit_store_app/views/home_page/home_page.dart';
 import 'package:fruit_store_app/views/register_page/pass_visibility/password_visibility_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/views/welcome/welcome_page.dart';
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: themeData,
-          home: const WelcomePage(),
+          home: const HomePage(),
           routes: AppRoutes.path,
         ),
       ),

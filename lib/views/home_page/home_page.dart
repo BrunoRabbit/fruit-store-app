@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
-        isHomeScreen: false,
+        isHomeScreen: true,
       ),
       drawer: const Drawer(), // TODO - Implements Drawer
       body: BlocListener<AuthBloc, AuthState>(
