@@ -40,7 +40,8 @@ class TopSell extends StatelessWidget {
                 Product product = _controller.fruitsList[index];
                 return CardFruits(
                   product: Product(
-                    qtdd: product.qtdd,
+                    id: product.id,
+                    // qtdd: product.qtdd,
                     name: product.name,
                     price: product.price,
                     bgColor: product.bgColor,

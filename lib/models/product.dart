@@ -1,24 +1,38 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class Product {
+class Product extends Equatable {
+  final int id;
   final String name;
-  double price;
+  final double price;
   final Color bgColor;
   final String image;
   final Color iconColor;
   bool isFavorite;
   final double rating;
-  int qtdd;
+  // int qtdd;
 
   Product({
     Key? key,
-    required this.name,
-    required this.price,
-    required this.bgColor,
-    required this.image,
-    required this.iconColor,
+    this.id = 0,
+    this.name = 'Inválido',
+    this.price = 0.00,
+    this.bgColor = Colors.white,
+    this.image = 'No Image',
+    this.iconColor = Colors.black,
     this.isFavorite = false,
-    required this.rating,
-    required this.qtdd,
+    this.rating = 0,
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        price,
+        bgColor,
+        image,
+        iconColor,
+        isFavorite,
+        rating,
+      ];
 }

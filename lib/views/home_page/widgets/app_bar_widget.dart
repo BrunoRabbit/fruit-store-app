@@ -1,8 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/controllers/home_page_controller.dart';
+import 'package:fruit_store_app/views/cart_page/cart_page.dart';
+import 'package:fruit_store_app/views/home_page/home_page.dart';
 
-class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
   final IconData icon;
@@ -20,33 +23,43 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
+  State<AppBarWidget> createState() => _AppBarWidgetState();
+}
+
+class _AppBarWidgetState extends State<AppBarWidget> {
+  @override
   Widget build(BuildContext context) {
+    final HomePageController _homePageController = HomePageController();
+
     return AppBar(
       leadingWidth: 98,
       leading: IconButton(
         icon: Icon(
-          icon,
+          widget.icon,
           size: 33,
-          color: isNeedContrast ? Colors.white : Colors.black87,
+          color: widget.isNeedContrast ? Colors.white : Colors.black87,
         ),
-        onPressed: onPressed,
+        onPressed: widget.onPressed,
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       ),
       actions: [
-        isHomeScreen
+        widget.isHomeScreen
             ? Padding(
-                padding: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.only(top: 3, right: 12),
                 child: Badge(
-                  padding: const EdgeInsets.only(
-                    top: 2,
-                    bottom: 8,
-                    left: 15,
-                  ),
-                  badgeContent: const Text(
-                    '2',
+                  badgeContent: Text(
+                    _homePageController.fruitsList.length.toString(),
                   ),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CartPage();
+                          },
+                        ),
+                      );
+                    },
                     icon: const Icon(
                       FeatherIcons.shoppingCart,
                       size: 30,

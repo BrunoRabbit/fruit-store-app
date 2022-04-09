@@ -11,8 +11,8 @@ class ItemCard extends StatelessWidget {
   const ItemCard({
     Key? key,
     required this.product,
-    this.width = 150,
-    this.height = 200,
+    this.width = 200,
+    this.height = 250,
   }) : super(key: key);
 
   @override
@@ -20,6 +20,7 @@ class ItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 25),
       child: Card(
+        color: Colors.grey[800], // Work as elevation
         elevation: 5,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
@@ -41,6 +42,7 @@ class ItemCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // TODO - IMPLEMENTS CORRECTLY
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
@@ -51,22 +53,26 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    CustomText(
-                      label: product.name,
-                      size: 18,
-                      fontFamily: 'Inter-Bold',
-                    ),
-                    product.isFavorite
-                        ? const Icon(Icons.favorite)
-                        : const Icon(Icons.favorite_border),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Row(
+                    children: [
+                      CustomText(
+                        label: product.name,
+                        size: 18,
+                        fontFamily: 'Inter-Bold',
+                      ),
+                      const Spacer(),
+                      product.isFavorite
+                          ? const Icon(Icons.favorite)
+                          : const Icon(Icons.favorite_border),
+                    ],
+                  ),
                 ),
                 CustomText(
                   label: '\$${product.price} each',
-                  size: 14,
-                  fontFamily: 'Inter-Bold',
+                  size: 15,
+                  fontFamily: 'Inter-SemiBold',
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

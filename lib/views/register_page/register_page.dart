@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/routes/app_routes.dart';
+import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
-import 'package:fruit_store_app/views/home_page/widgets/app_bar_widget.dart';
 import 'package:fruit_store_app/views/register_page/widgets/register_widget.dart';
 
 class RegisterPage extends StatefulWidget {

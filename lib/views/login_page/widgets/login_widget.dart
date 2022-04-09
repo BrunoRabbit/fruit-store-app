@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
+import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/views/register_page/register_page.dart';
-import 'package:fruit_store_app/widgets/custom_button.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 import 'package:fruit_store_app/widgets/custom_text_form_field.dart';
 

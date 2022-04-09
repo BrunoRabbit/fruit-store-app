@@ -12,7 +12,7 @@ class HomePageController {
       iconColor: primaryColor,
       isFavorite: false,
       rating: 2.0,
-      qtdd: 1,
+      // qtdd: 1,
     ),
     Product(
       name: 'Pineapple',
@@ -22,7 +22,7 @@ class HomePageController {
       iconColor: secondaryColor,
       isFavorite: false,
       rating: 3.0,
-      qtdd: 1,
+      // qtdd: 1,
     ),
     Product(
       name: 'Tomato',
@@ -32,7 +32,7 @@ class HomePageController {
       iconColor: primaryColor,
       isFavorite: false,
       rating: 5.0,
-      qtdd: 1,
+      // qtdd: 1,
     ),
   ];
 

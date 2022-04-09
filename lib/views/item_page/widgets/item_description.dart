@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_store_app/views/cart_page/cart_page.dart';
-import '../../../models/product.dart';
-import '../../../styles/color_theme.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/custom_text.dart';
-import '../../../widgets/star_icon.dart';
+import 'package:fruit_store_app/controllers/home_page_controller.dart';
+import 'package:fruit_store_app/models/product.dart';
+import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:fruit_store_app/widgets/custom_button.dart';
+import 'package:fruit_store_app/widgets/custom_text.dart';
+import 'package:fruit_store_app/widgets/star_icon.dart';
 
 class ItemDescription extends StatelessWidget {
   final Product? product;
@@ -13,8 +13,10 @@ class ItemDescription extends StatelessWidget {
     Key? key,
     required this.product,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final HomePageController _controllerHomePage = HomePageController();
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -105,15 +107,18 @@ class ItemDescription extends StatelessWidget {
                   type: CustomButtonType.rounded,
                   label: 'Add to cart',
                   onPress: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return CartPage(
-                            product: product!,
-                          );
-                        },
-                      ),
-                    );
+                    // fold para dobrar
+
+                    _controllerHomePage.fruitsList.add(product!);
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) {
+                    //       return CartPage(
+                    //         product: product!,
+                    //       );
+                    //     },
+                    //   ),
+                    // );
                   },
                 ),
               ],

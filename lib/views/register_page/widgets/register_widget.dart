@@ -3,7 +3,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_store_app/blocs/auth/auth_bloc.dart';
+import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/views/login_page/login_page.dart';
 import 'package:fruit_store_app/views/register_page/pass_visibility/password_visibility_bloc.dart';
