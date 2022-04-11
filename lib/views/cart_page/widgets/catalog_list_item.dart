@@ -22,13 +22,14 @@ class CatalogListItem extends StatelessWidget {
         maxHeight: 48,
         child: Row(
           children: [
-            AspectRatio(
-                aspectRatio: 1, child: ColoredBox(color: product.bgColor)),
+            AspectRatio(aspectRatio: 1, child: Image.asset(product.image)),
             const SizedBox(width: 24),
             Expanded(
-                child: CustomText(
-              label: product.name,
-            )),
+              child: CustomText(
+                label: product.name,
+                fontFamily: 'Inter-SemiBold',
+              ),
+            ),
             const SizedBox(width: 24),
             BlocBuilder<CartBloc, CartState>(
               builder: ((context, state) {
@@ -38,10 +39,12 @@ class CatalogListItem extends StatelessWidget {
                 if (state is CartLoaded) {
                   final isCart = state.cartModel.products.contains(product);
 
-                  return ElevatedButton.icon(
-                    label: const Text(''),
-                    icon: const Icon(Icons.add_outlined),
+                  return IconButton(
                     onPressed: () {},
+                    icon: const Icon(
+                      Icons.add_circle_outline_sharp,
+                      color: primaryColor,
+                    ),
                   );
                 }
                 return Container();

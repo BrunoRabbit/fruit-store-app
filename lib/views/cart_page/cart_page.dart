@@ -120,7 +120,7 @@ class _CartPageState extends State<CartPage>
                       children: [
                         Flexible(
                           child: SizedBox(
-                            height: 220,
+                            height: 210,
                             child: ListView.builder(
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
@@ -148,9 +148,10 @@ class _CartPageState extends State<CartPage>
                           builder: (context, state) {
                             if (state is CatalogLoading) {
                               return const Center(
-                                  child: CircularProgressIndicator(
-                                color: primaryColor,
-                              ));
+                                child: CircularProgressIndicator(
+                                  color: primaryColor,
+                                ),
+                              );
                             }
                             if (state is CatalogLoaded) {
                               return Flexible(
@@ -165,18 +166,6 @@ class _CartPageState extends State<CartPage>
                                   },
                                 ),
                               );
-                              // return SingleChildScrollView(
-                              //   controller: ScrollController(),
-                              //   scrollDirection: Axis.vertical,
-                              //   child: Column(
-                              //     children: List.generate(
-                              //       state.catalog.itemNames.length,
-                              //       (index) => CatalogListItem(
-                              //         product:
-                              //             state.catalog.getByPosition(index),
-                              //       ),
-                              //     ),
-                              //   ),
                             }
                             return const Text('Something went wrong!');
                           },

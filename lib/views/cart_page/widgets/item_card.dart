@@ -11,7 +11,7 @@ class ItemCard extends StatelessWidget {
   const ItemCard({
     Key? key,
     required this.product,
-    this.width = 200,
+    this.width = 180,
     this.height = 250,
   }) : super(key: key);
 
