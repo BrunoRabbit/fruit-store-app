@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fruit_store_app/models/product.dart';
+import 'package:fruit_store_app/views/item_page/bloc/favorite/favorite_bloc.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   final Product product;
   final double width;
   final double height;
@@ -14,6 +16,18 @@ class ItemCard extends StatelessWidget {
     this.width = 180,
     this.height = 250,
   }) : super(key: key);
+
+  @override
+  State<ItemCard> createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+  late FavoriteBloc favoriteBloc;
+  @override
+  void initState() {
+    favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +42,8 @@ class ItemCard extends StatelessWidget {
           ),
         ),
         child: Container(
-          width: width,
-          height: height,
+          width: widget.width,
+          height: widget.height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.grey[200],
@@ -47,30 +61,36 @@ class ItemCard extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      product.image,
+                      widget.product.image,
                       height: 120,
                       width: 120,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Row(
-                    children: [
-                      CustomText(
-                        label: product.name,
-                        size: 18,
-                        fontFamily: 'Inter-Bold',
+                BlocBuilder<FavoriteBloc, FavoriteState>(
+                  bloc: favoriteBloc,
+                  builder: (context, state) {
+                    print(state.product);
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Row(
+                        children: [
+                          CustomText(
+                            label: state.product[widget.product.id].name,
+                            size: 18,
+                            fontFamily: 'Inter-Bold',
+                          ),
+                          const Spacer(),
+                          state.product[widget.product.id].isFavorite
+                              ? const Icon(Icons.favorite)
+                              : const Icon(Icons.favorite_border),
+                        ],
                       ),
-                      const Spacer(),
-                      product.isFavorite
-                          ? const Icon(Icons.favorite)
-                          : const Icon(Icons.favorite_border),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 CustomText(
-                  label: '\$${product.price} each',
+                  label: '\$${widget.product.price} each',
                   size: 15,
                   fontFamily: 'Inter-SemiBold',
                 ),
@@ -78,7 +98,7 @@ class ItemCard extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: product.bgColor,
+                        color: widget.product.bgColor,
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(20),
                         )),
@@ -86,7 +106,7 @@ class ItemCard extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: Icon(
                         Icons.add,
-                        color: product.iconColor,
+                        color: widget.product.iconColor,
                       ),
                     ),
                   ),

@@ -53,3 +53,16 @@ class HomePageController {
     ),
   ];
 }
+
+class ListProductState extends HomePageController {
+  static final ListProductState _instance = ListProductState._internal([]);
+
+  factory ListProductState() {
+    return _instance;
+  }
+
+  ListProductState._internal(List<Product> listProduct) {
+    listProduct;
+    print(listProduct);
+  }
+}

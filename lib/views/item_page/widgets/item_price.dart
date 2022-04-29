@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:fruit_store_app/views/item_page/bloc/favorite/favorite_bloc.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
-import 'package:fruit_store_app/widgets/like_button_widget.dart';
+import 'package:like_button/like_button.dart';
 
-class ItemPrice extends StatelessWidget {
+class ItemPrice extends StatefulWidget {
   final Product product;
   final String subTitle;
 
@@ -13,6 +15,19 @@ class ItemPrice extends StatelessWidget {
     required this.product,
     required this.subTitle,
   }) : super(key: key);
+
+  @override
+  State<ItemPrice> createState() => _ItemPriceState();
+}
+
+class _ItemPriceState extends State<ItemPrice> {
+  late FavoriteBloc favoriteBloc;
+
+  @override
+  void initState() {
+    favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +39,7 @@ class ItemPrice extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              label: product.name,
+              label: widget.product.name,
               size: 33,
               fontFamily: 'Inter-Bold',
             ),
@@ -32,7 +47,7 @@ class ItemPrice extends StatelessWidget {
               height: 10,
             ),
             CustomText(
-              label: subTitle,
+              label: widget.subTitle,
               size: 18,
               color: Colors.black54,
               fontFamily: 'Inter-Medium',
@@ -54,7 +69,7 @@ class ItemPrice extends StatelessWidget {
               width: 125,
               child: ElevatedButton(
                 child: CustomText(
-                  label: '\$${product.price.toStringAsFixed(2)}',
+                  label: '\$${widget.product.price.toStringAsFixed(2)}',
                   color: primaryColor,
                   fontFamily: 'Inter-Bold',
                 ),
@@ -91,15 +106,59 @@ class ItemPrice extends StatelessWidget {
                       left: 6,
                       right: 2,
                     ),
-                    child: LikeButtonWidget(
-                      size: 28,
-                      product: product,
-                      icon: Icons.favorite_border,
-                      secondIcon: Icons.favorite,
+                    child: BlocBuilder<FavoriteBloc, FavoriteState>(
+                      bloc: favoriteBloc,
+                      builder: (context, state) {
+                        return LikeButton(
+                          size: 28,
+                          onTap: (_) async {
+                            return state.product[widget.product.id].isFavorite =
+                                !state.product[widget.product.id].isFavorite;
+                          },
+                          isLiked: state.product[widget.product.id].isFavorite,
+                          likeBuilder: (isLiked) {
+                            Color color = isLiked ? primaryColor : Colors.grey;
+                            return Icon(
+                              isLiked ? Icons.favorite : Icons.favorite_border,
+                              size: 28,
+                              color: color,
+                            );
+                          },
+                        );
+                      },
                     ),
+                    // LikeButtonWidget(
+
+                    // size: 28,
+                    // product: product,
+                    // icon: Icons.favorite_border,
+                    // secondIcon: Icons.favorite,
+                    // ),
+                    // if (state is ChangeFavoriteState) {
+                    //   return LikeButtonWidget(
+                    //     size: 28,
+                    //     product: state.product,
+                    //     icon: Icons.favorite_border,
+                    //     secondIcon: Icons.favorite,
+                    //   );
+                    // }
+                    // if (state is UnChangeFavoriteState) {
+                    //   return LikeButtonWidget(
+                    //     size: 28,
+                    //     product: state.product,
+                    //     icon: Icons.favorite_border,
+                    //     secondIcon: Icons.favorite,
+                    //   );
+                    // }
+                    // return const SnackBar(
+                    //   content: CustomText(
+                    //     label: 'Something went wrong!',
+                    //   ),
+                    // );
                   ),
                 ),
               ),
+              // );
             ),
           ],
         ),
@@ -107,3 +166,14 @@ class ItemPrice extends StatelessWidget {
     );
   }
 }
+
+// class FavoriteSingleton {
+//   static final FavoriteSingleton _singleton = FavoriteSingleton._internal();
+//    Product product = Product();
+
+//   factory FavoriteSingleton() => _singleton;
+
+//   FavoriteSingleton._internal() {
+//     product;
+//   }
+// }

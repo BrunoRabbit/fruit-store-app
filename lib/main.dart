@@ -7,6 +7,7 @@ import 'package:fruit_store_app/global_blocs/catalog/catalog_bloc.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
 import 'package:fruit_store_app/repositories/shopping_repository.dart';
 import 'package:fruit_store_app/views/home_page/home_page.dart';
+import 'package:fruit_store_app/views/item_page/bloc/favorite/favorite_bloc.dart';
 import 'package:fruit_store_app/views/register_page/pass_visibility/password_visibility_bloc.dart';
 import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'routes/app_routes.dart';
@@ -32,16 +33,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   late ProgressBarBloc progressBarBloc;
   late PasswordVisibilityBloc passwordVisibilityBloc;
+  late FavoriteBloc favoriteBloc;
 
   @override
   void initState() {
-    super.initState();
+    favoriteBloc = FavoriteBloc();
     passwordVisibilityBloc = PasswordVisibilityBloc();
     progressBarBloc = ProgressBarBloc();
+    super.initState();
   }
 
   @override
   void dispose() {
+    favoriteBloc.close();
     progressBarBloc.close();
     passwordVisibilityBloc.close();
     super.dispose();
@@ -76,11 +80,14 @@ class _MyAppState extends State<MyApp> {
                   RepositoryProvider.of<ShoppingRepository>(context),
             )..add(CartStarted()),
           ),
+          BlocProvider<FavoriteBloc>(
+            create: (context) => favoriteBloc,
+          ),
           BlocProvider<ProgressBarBloc>(
-            create: (context) => ProgressBarBloc(),
+            create: (context) => progressBarBloc,
           ),
           BlocProvider<PasswordVisibilityBloc>(
-            create: (context) => PasswordVisibilityBloc(),
+            create: (context) => passwordVisibilityBloc,
           ),
         ],
         child: MaterialApp(

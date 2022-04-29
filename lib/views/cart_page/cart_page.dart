@@ -56,6 +56,8 @@ class _CartPageState extends State<CartPage>
 
   @override
   void initState() {
+    setState(() {});
+
     _tabController =
         TabController(length: listTabs.length, vsync: this, initialIndex: 1);
     _scrollController = ScrollController();
@@ -128,10 +130,9 @@ class _CartPageState extends State<CartPage>
                               itemBuilder: (context, index) {
                                 Product product =
                                     _homePageController.fruitsList[index];
-
                                 return ItemCard(
                                   product: Product(
-                                    // qtdd: product.qtdd,
+                                    isFavorite: product.isFavorite,
                                     name: product.name,
                                     price: product.price,
                                     bgColor: product.bgColor,
