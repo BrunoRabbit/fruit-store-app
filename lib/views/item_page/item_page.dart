@@ -6,15 +6,14 @@ import 'package:fruit_store_app/views/item_page/widgets/item_description.dart';
 import 'package:fruit_store_app/views/item_page/widgets/item_price.dart';
 
 class ItemPage extends StatelessWidget {
-  final Product? product;
-
   const ItemPage({
     Key? key,
-    this.product,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Product product =
+        ModalRoute.of(context)?.settings.arguments as Product;
     return Scaffold(
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
@@ -52,17 +51,17 @@ class ItemPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Image.asset(
-                  product!.image,
+                  product.image,
                   height: 200,
                   fit: BoxFit.contain,
                 ),
               ),
               ItemPrice(
-                product: product!,
+                product: product,
                 subTitle: 'Sweet and Juicy',
               ),
               ItemDescription(
-                product: product!,
+                product: product,
               ),
             ],
           ),

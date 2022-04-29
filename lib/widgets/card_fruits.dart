@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/views/item_page/item_page.dart';
+import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/widgets/custom_text.dart';
 
 class CardFruits extends StatelessWidget {
@@ -22,68 +22,66 @@ class CardFruits extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, right: 25),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(
-            // TODO - CHANGE TO PUSH NAMED
-            MaterialPageRoute(
-              builder: (_) => ItemPage(
-                product: product,
-              ),
-            ),
+          Navigator.of(context).pushNamed(
+            RoutesPath.itemPage,
+            arguments: product,
           );
         },
-        child: Container(
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: product.bgColor,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 10,
-              top: 10,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              color: product.bgColor,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  label: product.name,
-                  size: 18,
-                  fontFamily: 'Inter-Bold',
-                ),
-                CustomText(
-                  label: '\$${product.price} each',
-                  size: 14,
-                  fontFamily: 'Inter-Bold',
-                ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      product.image,
-                      height: 120,
-                      width: 120,
-                    ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 10,
+                top: 10,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    label: product.name,
+                    size: 18,
+                    fontFamily: 'Inter-Bold',
                   ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: product.bgColor,
-                        borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(20),
-                        )),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Icon(
-                        Icons.add,
-                        color: product.iconColor,
+                  CustomText(
+                    label: '\$${product.price} each',
+                    size: 14,
+                    fontFamily: 'Inter-Bold',
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        product.image,
+                        height: 120,
+                        width: 120,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: product.bgColor,
+                          borderRadius: const BorderRadius.only(
+                            bottomRight: Radius.circular(20),
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Icon(
+                          Icons.add,
+                          color: product.iconColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
