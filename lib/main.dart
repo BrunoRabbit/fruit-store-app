@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/global_blocs/cart/cart_bloc.dart';
 import 'package:fruit_store_app/global_blocs/catalog/catalog_bloc.dart';
+import 'package:fruit_store_app/pages/home_page/home_page.dart';
+import 'package:fruit_store_app/pages/item_page/bloc/favorite/favorite_bloc.dart';
+import 'package:fruit_store_app/pages/register_page/pass_visibility/password_visibility_bloc.dart';
+import 'package:fruit_store_app/pages/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
 import 'package:fruit_store_app/repositories/shopping_repository.dart';
-import 'package:fruit_store_app/views/home_page/home_page.dart';
-import 'package:fruit_store_app/views/item_page/bloc/favorite/favorite_bloc.dart';
-import 'package:fruit_store_app/views/register_page/pass_visibility/password_visibility_bloc.dart';
-import 'package:fruit_store_app/views/welcome/step_one/bloc/progress_bar_bloc.dart';
 import 'routes/app_routes.dart';
 
 void main() async {
@@ -94,7 +94,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: themeData,
-          home: const HomePage(),
+          home: const HomePage(), // HomePage
           routes: AppRoutes.path,
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:fruit_store_app/views/register_page/register_page.dart';
+import 'package:fruit_store_app/pages/register_page/register_page.dart';
 
 class RegisterPageRouteTransition extends CupertinoPageRoute {
   RegisterPageRouteTransition()

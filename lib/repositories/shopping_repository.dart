@@ -1,11 +1,6 @@
-import 'package:fruit_store_app/controllers/home_page_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 
 Duration _delay = const Duration(milliseconds: 800);
-
-HomePageController _controller = HomePageController();
-
-// get catalog => _controller.fruitsList;
 
 const catalog = [
   // TODO - PASSAR PARA INGLES
