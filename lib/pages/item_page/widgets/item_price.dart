@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/pages/item_page/bloc/favorite/favorite_bloc.dart';
 import 'package:like_button/like_button.dart';
 
 class ItemPrice extends StatefulWidget {
@@ -19,14 +17,6 @@ class ItemPrice extends StatefulWidget {
 }
 
 class _ItemPriceState extends State<ItemPrice> {
-  late FavoriteBloc _favoriteBloc;
-
-  @override
-  void initState() {
-    _favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -37,7 +27,7 @@ class _ItemPriceState extends State<ItemPrice> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppCustomText(
-              label: widget.product.name,
+              label: widget.product.name!,
               size: 33,
               fontFamily: 'Inter-Bold',
             ),
@@ -67,7 +57,7 @@ class _ItemPriceState extends State<ItemPrice> {
               width: 125,
               child: ElevatedButton(
                 child: AppCustomText(
-                  label: '\$${widget.product.price.toStringAsFixed(2)}',
+                  label: '\$${widget.product.price!.toStringAsFixed(2)}',
                   color: primaryColor,
                   fontFamily: 'Inter-Bold',
                 ),
@@ -85,10 +75,6 @@ class _ItemPriceState extends State<ItemPrice> {
             const SizedBox(
               height: 20,
             ),
-            // BlocBuilder<FavoriteBloc, FavoriteState>(
-            //   bloc: _favoriteBloc,
-            //   builder: (context, state) {
-            //     return
             Container(
               width: 45,
               height: 45,
@@ -111,18 +97,15 @@ class _ItemPriceState extends State<ItemPrice> {
                     child: LikeButton(
                       size: 28,
                       onTap: (_) async {
-                        widget.product.isFavorite = !widget.product.isFavorite;
+                        setState(() {
+                          widget.product.isFavorite =
+                              !widget.product.isFavorite!;
+                        });
 
-                        print(widget.product.isFavorite);
-
-                        _favoriteBloc.add(
-                          FavoriteItem(
-                            product: widget.product,
-                            newFavorite: widget.product.isFavorite,
-                            // newFavorite: state
-                            //     .productList[widget.product.id].isFavorite,
-                          ),
+                        widget.product.copyWith(
+                          isFavorite: widget.product.isFavorite,
                         );
+
                         return null;
                       },
                       isLiked: widget.product.isFavorite,

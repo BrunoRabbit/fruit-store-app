@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_store_app/app/widgets/app_bar_widget.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
-import 'package:fruit_store_app/pages/welcome/step_one/bloc/progress_bar_bloc.dart';
+import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
+import 'package:provider/provider.dart';
 
 class StepTwo extends StatefulWidget {
   const StepTwo({Key? key}) : super(key: key);
@@ -13,22 +13,17 @@ class StepTwo extends StatefulWidget {
 }
 
 class _StepTwoState extends State<StepTwo> {
-  late ProgressBarBloc progressBarBloc;
-
-  @override
-  void initState() {
-    progressBarBloc = BlocProvider.of<ProgressBarBloc>(context);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<WelcomePageController>(context);
     return Scaffold(
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
         isHomeScreen: false,
         onPressed: () {
-          progressBarBloc.add(ChangeStepBarEvent(0));
+          setState(() {
+            _controller.stepIndex - 1;
+          });
         },
       ),
       body: Padding(

@@ -48,16 +48,16 @@ class _ItemCardState extends State<ItemCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // TODO - IMPLEMENTS CORRECTLY
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      widget.product.image,
-                      height: 120,
-                      width: 120,
-                    ),
-                  ),
-                ),
+                // Expanded(
+                //   child: Container(
+                //     alignment: Alignment.center,
+                //     child: Image.asset(
+                //       widget.product.image,
+                //       height: 120,
+                //       width: 120,
+                //     ),
+                //   ),
+                // ),
                 // BlocBuilder<FavoriteBloc, FavoriteState>(
                 //   bloc: favoriteBloc,
                 //   builder: (context, state) {

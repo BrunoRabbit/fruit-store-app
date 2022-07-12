@@ -7,7 +7,7 @@ class AppCustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final bool isNeedContrast;
   final String? Function(String?)? validator;
-  final bool isObscureText;
+  final bool? isObscureText;
   final bool isPassword;
   final Widget? suffixIcon;
   final Iterable<String>? autofillHints;
@@ -18,7 +18,7 @@ class AppCustomTextFormField extends StatefulWidget {
     required this.controller,
     this.isNeedContrast = false,
     this.validator,
-    required this.isObscureText,
+    this.isObscureText,
     this.isPassword = false,
     this.suffixIcon,
     this.autofillHints,
@@ -38,7 +38,7 @@ class _AppCustomTextFormFieldState extends State<AppCustomTextFormField> {
         top: 15,
       ),
       child: TextFormField(
-        obscureText: widget.isObscureText,
+        obscureText: widget.isObscureText ?? false,
         controller: widget.controller,
         validator: widget.validator,
         cursorColor: widget.isNeedContrast ? Colors.white : Colors.black54,

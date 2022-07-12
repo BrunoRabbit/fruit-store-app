@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/data/data.dart';
-import 'package:fruit_store_app/global_blocs/catalog/catalog_bloc.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/pages/cart_page/widgets/catalog_list_item.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/circle_tab_indicator.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/custom_app_bar_widget.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/item_card.dart';
@@ -144,32 +141,32 @@ class _CartPageState extends State<CartPage>
                             ),
                           ),
                         ),
-                        BlocBuilder<CatalogBloc, CatalogState>(
-                          builder: (context, state) {
-                            if (state is CatalogLoading) {
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  color: primaryColor,
-                                ),
-                              );
-                            }
-                            if (state is CatalogLoaded) {
-                              return Flexible(
-                                child: ListView.builder(
-                                  controller: _scrollController,
-                                  itemCount: state.catalog.itemNames.length,
-                                  itemBuilder: (context, index) {
-                                    return CatalogListItem(
-                                      product:
-                                          state.catalog.getByPosition(index),
-                                    );
-                                  },
-                                ),
-                              );
-                            }
-                            return const Text('Something went wrong!');
-                          },
-                        ),
+                        // BlocBuilder<CatalogBloc, CatalogState>(
+                        //   builder: (context, state) {
+                        //     if (state is CatalogLoading) {
+                        //       return const Center(
+                        //         child: CircularProgressIndicator(
+                        //           color: primaryColor,
+                        //         ),
+                        //       );
+                        //     }
+                        //     if (state is CatalogLoaded) {
+                        //       return Flexible(
+                        //         child: ListView.builder(
+                        //           controller: _scrollController,
+                        //           itemCount: state.catalog.itemNames.length,
+                        //           itemBuilder: (context, index) {
+                        //             return CatalogListItem(
+                        //               product:
+                        //                   state.catalog.getByPosition(index),
+                        //             );
+                        //           },
+                        //         ),
+                        //       );
+                        //     }
+                        //     return const Text('Something went wrong!');
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

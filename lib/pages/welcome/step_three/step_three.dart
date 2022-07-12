@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_button.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
+import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/routes/login_page_route_transition.dart';
 import 'package:fruit_store_app/routes/register_page_route_transition.dart';
 import 'package:fruit_store_app/app/widgets/app_bar_widget.dart';
-import 'package:fruit_store_app/pages/welcome/step_one/bloc/progress_bar_bloc.dart';
+import 'package:provider/provider.dart';
 
 class StepThree extends StatefulWidget {
   const StepThree({Key? key}) : super(key: key);
@@ -16,23 +16,18 @@ class StepThree extends StatefulWidget {
 }
 
 class _StepThreeState extends State<StepThree> {
-  late ProgressBarBloc progressBarBloc;
-
-  @override
-  void initState() {
-    progressBarBloc = BlocProvider.of<ProgressBarBloc>(context);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<WelcomePageController>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBarWidget(
         isHomeScreen: false,
         icon: Icons.arrow_back_rounded,
         onPressed: () {
-          progressBarBloc.add(ChangeStepBarEvent(1));
+          setState(() {
+            _controller.stepIndex--;
+          });
         },
       ),
       body: Padding(

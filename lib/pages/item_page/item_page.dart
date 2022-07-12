@@ -31,7 +31,7 @@ class ItemPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Image.asset(
-                  product.image,
+                  product.image!,
                   height: 200,
                   fit: BoxFit.contain,
                 ),

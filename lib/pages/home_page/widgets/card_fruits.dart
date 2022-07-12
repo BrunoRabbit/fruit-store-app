@@ -43,7 +43,7 @@ class CardFruits extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppCustomText(
-                    label: product.name,
+                    label: product.name!,
                     size: 18,
                     fontFamily: 'Inter-Bold',
                   ),
@@ -56,7 +56,7 @@ class CardFruits extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        product.image,
+                        product.image!,
                         height: 120,
                         width: 120,
                       ),

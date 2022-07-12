@@ -32,8 +32,6 @@ class HomePage extends StatelessWidget {
             );
           }
         },
-        // Signing out the user
-        // context.read<AuthBloc>().add(SignOutRequested());
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(

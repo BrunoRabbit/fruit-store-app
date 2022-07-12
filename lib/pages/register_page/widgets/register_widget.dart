@@ -5,10 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text_form_field.dart';
+import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
 import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/pages/login_page/login_page.dart';
-import 'package:fruit_store_app/pages/register_page/pass_visibility/password_visibility_bloc.dart';
+import 'package:provider/provider.dart';
 
 class RegisterWidget extends StatefulWidget {
   const RegisterWidget({Key? key}) : super(key: key);
@@ -23,7 +24,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   late final TextEditingController _controllerUsername;
   final _formKey = GlobalKey<FormState>();
   late AuthBloc _authBloc;
-  late PasswordVisibilityBloc _passBloc;
 
   @override
   void initState() {
@@ -31,7 +31,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     _controllerEmail = TextEditingController();
     _controllerPassword = TextEditingController();
     _authBloc = BlocProvider.of<AuthBloc>(context);
-    _passBloc = BlocProvider.of<PasswordVisibilityBloc>(context);
     super.initState();
   }
 
@@ -63,6 +62,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<WelcomePageController>(context);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -146,38 +146,33 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           color: Colors.orange,
                         ),
                       ),
-                      BlocBuilder<PasswordVisibilityBloc,
-                          PasswordVisibilityState>(
-                        bloc: _passBloc,
-                        builder: (context, state) {
-                          return AppCustomTextFormField(
-                            isObscureText: state.isObscureText,
-                            controller: _controllerPassword,
-                            isNeedContrast: false,
-                            hintText: 'Password',
-                            validator: (value) {
-                              return value != null && value.length < 6
-                                  ? "Enter min. 6 characters!"
-                                  : null;
-                            },
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                _passBloc.add(
-                                  ChangeVisibility(!state.isObscureText),
-                                );
-                              },
-                              child: state.isObscureText
-                                  ? const Icon(
-                                      FeatherIcons.eyeOff,
-                                      color: Colors.orange,
-                                    )
-                                  : const Icon(
-                                      FeatherIcons.eye,
-                                      color: Colors.orange,
-                                    ),
-                            ),
-                          );
+                      AppCustomTextFormField(
+                        isObscureText: _controller.isObscureText,
+                        controller: _controllerPassword,
+                        isNeedContrast: false,
+                        hintText: 'Password',
+                        validator: (value) {
+                          return value != null && value.length < 6
+                              ? "Enter min. 6 characters!"
+                              : null;
                         },
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _controller.isObscureText =
+                                  !_controller.isObscureText;
+                            });
+                          },
+                          child: _controller.isObscureText
+                              ? const Icon(
+                                  FeatherIcons.eyeOff,
+                                  color: Colors.orange,
+                                )
+                              : const Icon(
+                                  FeatherIcons.eye,
+                                  color: Colors.orange,
+                                ),
+                        ),
                       ),
                       const SizedBox(
                         height: 15,

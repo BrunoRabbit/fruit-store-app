@@ -1,15 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/controllers/product_controller.dart';
+import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/global_blocs/cart/cart_bloc.dart';
-import 'package:fruit_store_app/global_blocs/catalog/catalog_bloc.dart';
-import 'package:fruit_store_app/pages/home_page/home_page.dart';
-import 'package:fruit_store_app/pages/item_page/bloc/favorite/favorite_bloc.dart';
-import 'package:fruit_store_app/pages/register_page/pass_visibility/password_visibility_bloc.dart';
-import 'package:fruit_store_app/pages/welcome/step_one/bloc/progress_bar_bloc.dart';
+import 'package:fruit_store_app/pages/welcome/welcome_page.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
-import 'package:fruit_store_app/repositories/shopping_repository.dart';
+import 'package:provider/provider.dart';
 import 'routes/app_routes.dart';
 
 void main() async {
@@ -31,73 +28,35 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late ProgressBarBloc progressBarBloc;
-  late PasswordVisibilityBloc passwordVisibilityBloc;
-  late FavoriteBloc favoriteBloc;
-
-  @override
-  void initState() {
-    favoriteBloc = FavoriteBloc();
-    passwordVisibilityBloc = PasswordVisibilityBloc();
-    progressBarBloc = ProgressBarBloc();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    favoriteBloc.close();
-    progressBarBloc.close();
-    passwordVisibilityBloc.close();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      // create: (context) => AuthRepository(),
-      providers: [
-        RepositoryProvider<AuthRepository>(
-            create: (context) => AuthRepository()),
-        RepositoryProvider<ShoppingRepository>(
-            create: (context) => ShoppingRepository()),
-      ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(
-              authRepository: RepositoryProvider.of<AuthRepository>(context),
+    return RepositoryProvider(
+      create: (context) => AuthRepository(),
+      child: BlocProvider(
+        create: (context) => AuthBloc(
+          authRepository: RepositoryProvider.of<AuthRepository>(context),
+        ),
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider<WelcomePageController>(
+              create: (context) => WelcomePageController(),
             ),
+            ChangeNotifierProvider<ProductController>(
+              create: (context) => ProductController(),
+            ),
+          ],
+          child: MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: themeData,
+            home: const WelcomePage(), // HomePage
+            routes: AppRoutes.path,
           ),
-          BlocProvider<CatalogBloc>(
-            create: (context) => CatalogBloc(
-              shoppingRepository:
-                  RepositoryProvider.of<ShoppingRepository>(context),
-            )..add(CatalogStarted()),
-          ),
-          BlocProvider<CartBloc>(
-            create: (context) => CartBloc(
-              shoppingRepository:
-                  RepositoryProvider.of<ShoppingRepository>(context),
-            )..add(CartStarted()),
-          ),
-          BlocProvider<FavoriteBloc>(
-            create: (context) => favoriteBloc,
-          ),
-          BlocProvider<ProgressBarBloc>(
-            create: (context) => progressBarBloc,
-          ),
-          BlocProvider<PasswordVisibilityBloc>(
-            create: (context) => passwordVisibilityBloc,
-          ),
-        ],
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: themeData,
-          home: const HomePage(), // HomePage
-          routes: AppRoutes.path,
         ),
       ),
     );
   }
 }
+//  TODO - PROGRESS BAR BLOC
+//  TODO - PASSWORD VISIBILITY
+ 

@@ -42,7 +42,7 @@ class ItemDescription extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: AppCustomText(
-                label: product!.name,
+                label: product!.name!,
                 size: 20,
                 fontFamily: 'Inter-Bold',
               ),
@@ -53,7 +53,7 @@ class ItemDescription extends StatelessWidget {
                   children: List.generate(
                     5,
                     (index) => StarIcon(
-                      isGoodRate: index > product!.rating - 1 ? false : true,
+                      isGoodRate: index > product!.rating! - 1 ? false : true,
                     ),
                   ),
                 ),
