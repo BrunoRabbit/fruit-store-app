@@ -20,9 +20,9 @@ class ProductController extends ChangeNotifier {
     }
   }
 
-  void addToCart(Product? product) {
+  void addToCart(Product product) {
     try {
-      cartList.add(product!);
+      cartList.add(product);
     } catch (e) {
       Exception('Something went wrong');
     }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 
 import 'package:fruit_store_app/models/product.dart';
 
 class ItemCardWidget extends StatelessWidget {
-  Product product;
+  final Product product;
 
-  ItemCardWidget({
+  const ItemCardWidget({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -42,7 +43,11 @@ class ItemCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          const Text('joje'),
+          AppCustomText(
+            label: product.name!,
+            fontFamily: 'Inter-SemiBold',
+            size: 16,
+          ),
         ],
       ),
     );
