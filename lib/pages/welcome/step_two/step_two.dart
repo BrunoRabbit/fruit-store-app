@@ -21,9 +21,7 @@ class _StepTwoState extends State<StepTwo> {
         icon: Icons.arrow_back_rounded,
         isHomeScreen: false,
         onPressed: () {
-          setState(() {
-            _controller.stepIndex - 1;
-          });
+          _controller.previousPage();
         },
       ),
       body: Padding(

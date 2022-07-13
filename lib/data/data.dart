@@ -54,3 +54,5 @@ List<CardNear> listCardNear = const [
     image: './assets/images/yummi-food.png',
   ),
 ];
+
+List<Product> cartList = [];

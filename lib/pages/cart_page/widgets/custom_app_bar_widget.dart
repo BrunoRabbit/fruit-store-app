@@ -21,7 +21,7 @@ class CustomAppBarWidget extends StatelessWidget
       centerTitle: true,
       title: const AppCustomText(
         label: 'Add to your cart',
-        fontFamily: 'Inter-Medium',
+        fontFamily: 'Inter-SemiBold',
         size: 18,
       ),
     );

@@ -25,9 +25,7 @@ class _StepThreeState extends State<StepThree> {
         isHomeScreen: false,
         icon: Icons.arrow_back_rounded,
         onPressed: () {
-          setState(() {
-            _controller.stepIndex--;
-          });
+          _controller.previousPage();
         },
       ),
       body: Padding(
@@ -42,7 +40,6 @@ class _StepThreeState extends State<StepThree> {
                 'assets/svgs/congrats.svg',
               ),
             ),
-            // StorySet
             const SizedBox(
               height: 25,
             ),

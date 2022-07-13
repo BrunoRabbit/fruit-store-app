@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
+import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:like_button/like_button.dart';
+import 'package:provider/provider.dart';
 
 class ItemPrice extends StatefulWidget {
   final Product product;
@@ -19,6 +21,7 @@ class ItemPrice extends StatefulWidget {
 class _ItemPriceState extends State<ItemPrice> {
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<ProductController>(context);
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -97,20 +100,9 @@ class _ItemPriceState extends State<ItemPrice> {
                     child: LikeButton(
                       size: 28,
                       onTap: (_) async {
-                        setState(() {
-                          widget.product.isFavorite =
-                              !widget.product.isFavorite!;
-                        });
-
-                        widget.product.copyWith(
-                          isFavorite: widget.product.isFavorite,
-                        );
-
-                        return null;
+                        return await _controller.changeFavorite(widget.product);
                       },
                       isLiked: widget.product.isFavorite,
-                      // isLiked:
-                      //     state.productList[widget.product.id].isFavorite,
                       likeBuilder: (isLiked) {
                         Color color = isLiked ? primaryColor : Colors.grey;
                         return Icon(
@@ -123,8 +115,6 @@ class _ItemPriceState extends State<ItemPrice> {
                   ),
                 ),
               ),
-              //   );
-              // },
             ),
           ],
         ),
@@ -132,30 +122,3 @@ class _ItemPriceState extends State<ItemPrice> {
     );
   }
 }
-/**
- *  // IconButton(
-                            //   onPressed: () {
-                            //     // Color color = isLiked ? primaryColor : Colors.grey;
-                            //     widget.product.isFavorite =
-                            //         !widget.product.isFavorite;
-
-                            //     print(widget.product.id);
-                            //     print(widget.product.isFavorite);
-
-                            //     _favoriteBloc.add(
-                            //       FavoriteItem(
-                            //         product: widget.product,
-                            //         newFavorite: widget.product.isFavorite,
-                            //         // newFavorite: state
-                            //         //     .productList[widget.product.id].isFavorite,
-                            //       ),
-                            //     );
-                            //   },
-                            //   icon: Icon(
-                            //     widget.product.isFavorite
-                            //         ? Icons.favorite
-                            //         : Icons.favorite_border,
-                            //     size: 28,
-                            //     color: Colors.amber,
-                            //   ),
- */

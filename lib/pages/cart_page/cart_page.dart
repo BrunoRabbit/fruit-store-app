@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/pages/cart_page/widgets/circle_tab_indicator.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/custom_app_bar_widget.dart';
-import 'package:fruit_store_app/pages/cart_page/widgets/item_card.dart';
+import 'package:fruit_store_app/pages/cart_page/widgets/item_card_widget.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -14,59 +12,7 @@ class CartPage extends StatefulWidget {
   State<CartPage> createState() => _CartPageState();
 }
 
-class _CartPageState extends State<CartPage>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  late ScrollController _scrollController;
-
-  List<Widget> listTabs = [
-    const Tab(
-      child: AppCustomText(
-        label: 'Pinapple',
-        fontFamily: 'Inter-SemiBold',
-        size: 14.5,
-      ),
-    ),
-    const Tab(
-      child: AppCustomText(
-        label: 'Oranges',
-        fontFamily: 'Inter-SemiBold',
-        size: 15,
-      ),
-    ),
-    const Tab(
-      child: AppCustomText(
-        label: 'Papaya',
-        fontFamily: 'Inter-SemiBold',
-        size: 15,
-      ),
-    ),
-    const Tab(
-      child: AppCustomText(
-        label: 'Guava',
-        fontFamily: 'Inter-SemiBold',
-        size: 15,
-      ),
-    ),
-  ];
-
-  @override
-  void initState() {
-    setState(() {});
-
-    _tabController =
-        TabController(length: listTabs.length, vsync: this, initialIndex: 1);
-    _scrollController = ScrollController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    _tabController.dispose();
-    super.dispose();
-  }
-
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,94 +38,62 @@ class _CartPageState extends State<CartPage>
                 color: Colors.black.withOpacity(0.6),
               ),
             ),
-            TabBar(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-              controller: _tabController,
-              tabs: listTabs,
-              indicatorColor: primaryColor,
-              labelColor: Colors.black87,
-              unselectedLabelColor: Colors.black87.withOpacity(0.6),
-              indicator: CircleTabIndicator(color: primaryColor, radius: 4),
+            const SizedBox(
+              height: 15,
+            ),
+            SizedBox(
+              height: 15,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: 2,
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 10,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 10,
+                    width: 10,
+                    color: Colors.red,
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, left: 30),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline_rounded,
+                    color: Colors.black87.withOpacity(0.7),
+                    size: 22,
+                  ),
+                  const SizedBox(width: 5),
+                  AppCustomText(
+                    label: 'You can swipe an item to remove it',
+                    fontFamily: 'Inter-Medium',
+                    size: 18,
+                    color: Colors.black.withOpacity(0.7),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.width * 1.05,
-              child: TabBarView(
-                controller: _tabController,
+              child: Column(
                 children: [
-                  const Center(
-                    child: Icon(
-                      Icons.read_more,
-                      size: 50,
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
-                    child: Column(
-                      children: [
-                        Flexible(
-                          child: SizedBox(
-                            height: 210,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: fruitsList.length,
-                              itemBuilder: (context, index) {
-                                Product product = fruitsList[index];
-                                return ItemCard(
-                                  product: Product(
-                                    id: product.id,
-                                    isFavorite: product.isFavorite,
-                                    name: product.name,
-                                    price: product.price,
-                                    bgColor: product.bgColor,
-                                    image: product.image,
-                                    iconColor: product.iconColor,
-                                    rating: product.rating,
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                        // BlocBuilder<CatalogBloc, CatalogState>(
-                        //   builder: (context, state) {
-                        //     if (state is CatalogLoading) {
-                        //       return const Center(
-                        //         child: CircularProgressIndicator(
-                        //           color: primaryColor,
-                        //         ),
-                        //       );
-                        //     }
-                        //     if (state is CatalogLoaded) {
-                        //       return Flexible(
-                        //         child: ListView.builder(
-                        //           controller: _scrollController,
-                        //           itemCount: state.catalog.itemNames.length,
-                        //           itemBuilder: (context, index) {
-                        //             return CatalogListItem(
-                        //               product:
-                        //                   state.catalog.getByPosition(index),
-                        //             );
-                        //           },
-                        //         ),
-                        //       );
-                        //     }
-                        //     return const Text('Something went wrong!');
-                        //   },
-                        // ),
-                      ],
-                    ),
-                  ),
-                  const Center(
-                    child: Icon(
-                      Icons.aspect_ratio,
-                      size: 50,
-                    ),
-                  ),
-                  const Center(
-                    child: Icon(
-                      Icons.backpack_outlined,
-                      size: 50,
+                    child: SizedBox(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: cartList.length,
+                        itemBuilder: (context, index) {
+                          Product product = fruitsList[index];
+                          return ItemCardWidget(product: product);
+                        },
+                      ),
                     ),
                   ),
                 ],

@@ -19,68 +19,69 @@ class _WelcomePageState extends State<WelcomePage> {
     final _controller = Provider.of<WelcomePageController>(context);
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          Expanded(
-            child: _controller.listScreens[_controller.stepIndex],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: defaultPadding * 1.8,
-              horizontal: defaultPadding,
+        child: Column(
+          children: [
+            Expanded(
+              child: _controller.listScreens[_controller.stepIndex],
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _controller.stepIndex != 2
-                    ? GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _controller.stepIndex = 2;
-                          });
-                        },
-                        child: const AppCustomText(
-                          label: 'Skip',
-                          color: Colors.black87,
-                          fontFamily: 'Inter-Bold',
-                          size: 15,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: defaultPadding * 1.8,
+                horizontal: defaultPadding,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _controller.stepIndex != 2
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _controller.stepIndex = 2;
+                            });
+                          },
+                          child: const AppCustomText(
+                            label: 'Skip',
+                            color: Colors.black87,
+                            fontFamily: 'Inter-Bold',
+                            size: 15,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () {},
+                          child: const AppCustomText(
+                            label: 'Skip',
+                            color: Colors.transparent,
+                            fontFamily: 'Inter-Bold',
+                            size: 15,
+                          ),
                         ),
-                      )
-                    : GestureDetector(
-                        onTap: () {},
-                        child: const AppCustomText(
-                          label: 'Skip',
-                          color: Colors.transparent,
-                          fontFamily: 'Inter-Bold',
-                          size: 15,
+                  const Spacer(),
+                  StepBarSection(
+                    currentIndex: _controller.stepIndex,
+                  ),
+                  const Spacer(),
+                  _controller.stepIndex != 2
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _controller.stepIndex++;
+                            });
+                          },
+                          child: const Icon(FeatherIcons.arrowRight),
+                        )
+                      : GestureDetector(
+                          onTap: () {},
+                          child: const Icon(
+                            FeatherIcons.arrowRight,
+                            color: Colors.transparent,
+                          ),
                         ),
-                      ),
-                const Spacer(),
-                StepBarSection(
-                  currentIndex: _controller.stepIndex,
-                ),
-                const Spacer(),
-                _controller.stepIndex != 2
-                    ? GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _controller.stepIndex++;
-                          });
-                        },
-                        child: const Icon(FeatherIcons.arrowRight),
-                      )
-                    : GestureDetector(
-                        onTap: () {},
-                        child: const Icon(
-                          FeatherIcons.arrowRight,
-                          color: Colors.transparent,
-                        ),
-                      ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

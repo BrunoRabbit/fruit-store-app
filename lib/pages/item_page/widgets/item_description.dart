@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_button.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
+import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/pages/item_page/widgets/star_icon.dart';
-import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
+import 'package:provider/provider.dart';
 
-class ItemDescription extends StatelessWidget {
+class ItemDescription extends StatefulWidget {
   final Product? product;
 
   const ItemDescription({
@@ -15,7 +16,13 @@ class ItemDescription extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ItemDescription> createState() => _ItemDescriptionState();
+}
+
+class _ItemDescriptionState extends State<ItemDescription> {
+  @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<ProductController>(context);
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -42,7 +49,7 @@ class ItemDescription extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: AppCustomText(
-                label: product!.name!,
+                label: widget.product!.name!,
                 size: 20,
                 fontFamily: 'Inter-Bold',
               ),
@@ -53,14 +60,15 @@ class ItemDescription extends StatelessWidget {
                   children: List.generate(
                     5,
                     (index) => StarIcon(
-                      isGoodRate: index > product!.rating! - 1 ? false : true,
+                      isGoodRate:
+                          index > widget.product!.rating! - 1 ? false : true,
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 6, left: 8),
                   child: AppCustomText(
-                    label: '${product!.rating}',
+                    label: '${widget.product!.rating}',
                     fontFamily: 'Inter-Bold',
                     size: 18,
                     richLabel: ' (42 reviews)',
@@ -96,7 +104,7 @@ class ItemDescription extends StatelessWidget {
             Row(
               children: [
                 AppCustomText(
-                  label: '\$${product!.price}',
+                  label: '\$${widget.product!.price}',
                   color: primaryColor,
                   size: 20,
                   fontFamily: 'Inter-Bold',
@@ -107,17 +115,8 @@ class ItemDescription extends StatelessWidget {
                   label: 'Add to cart',
                   onPress: () {
                     // fold para dobrar
-
-                    fruitsList.add(product!);
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return CartPage(
-                    //         product: product!,
-                    //       );
-                    //     },
-                    //   ),
-                    // );
+                    _controller.addToCart(widget.product!);
+                    Navigator.of(context).pop();
                   },
                 ),
               ],
