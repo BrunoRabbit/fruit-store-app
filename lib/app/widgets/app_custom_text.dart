@@ -38,7 +38,6 @@ class AppCustomText extends StatelessWidget {
             style: const TextStyle(
               fontFamily: 'Inter-Medium',
               color: Colors.black54,
-              fontSize: 14,
             ),
           ),
         ],

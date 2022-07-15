@@ -21,6 +21,7 @@ class _StepThreeState extends State<StepThree> {
     final _controller = Provider.of<WelcomePageController>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
       appBar: AppBarWidget(
         isHomeScreen: false,
         icon: Icons.arrow_back_rounded,

@@ -13,11 +13,6 @@ class WelcomePageController extends ChangeNotifier {
     StepThree(),
   ];
 
-  nextPage() {
-    stepIndex++;
-    notifyListeners();
-  }
-
   previousPage() {
     stepIndex--;
     notifyListeners();

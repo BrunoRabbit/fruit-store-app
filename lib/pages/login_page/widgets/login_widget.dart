@@ -29,8 +29,8 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   void initState() {
     _authBloc = BlocProvider.of<AuthBloc>(context);
-    _controllerEmail = TextEditingController();
-    _controllerPassword = TextEditingController();
+    _controllerEmail = TextEditingController(text: 'aaa@hotmail.com');
+    _controllerPassword = TextEditingController(text: 'aaaaaa');
     super.initState();
   }
 

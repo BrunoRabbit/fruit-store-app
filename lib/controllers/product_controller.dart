@@ -29,4 +29,37 @@ class ProductController extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  increaseQuantity(Product product) {
+    int quantity = 0;
+    if (product.quantity != null) {
+      quantity = product.quantity!;
+
+      quantity++;
+
+      product.quantity = quantity;
+
+      product.copyWith(
+        quantity: product.quantity,
+      );
+      notifyListeners();
+    }
+  }
+
+  decreaseQuantity(Product product) {
+    int quantity;
+
+    if (product.quantity != null && product.quantity! > 1) {
+      quantity = product.quantity!;
+
+      quantity--;
+
+      product.quantity = quantity;
+
+      product.copyWith(
+        quantity: product.quantity,
+      );
+      notifyListeners();
+    }
+  }
 }

@@ -17,6 +17,7 @@ class _StepTwoState extends State<StepTwo> {
   Widget build(BuildContext context) {
     final _controller = Provider.of<WelcomePageController>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
         isHomeScreen: false,

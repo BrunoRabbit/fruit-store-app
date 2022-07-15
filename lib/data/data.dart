@@ -6,6 +6,7 @@ List<Product> fruitsList = [
   Product(
     id: 0,
     name: 'Orange',
+    quantity: 1,
     price: 2.89,
     bgColor: primaryColor.withOpacity(0.3),
     image: './assets/images/orange.png',
@@ -16,6 +17,7 @@ List<Product> fruitsList = [
   ),
   Product(
     id: 1,
+    quantity: 1,
     name: 'Pineapple',
     price: 3.02,
     bgColor: secondaryColor.withOpacity(0.3),
@@ -27,6 +29,7 @@ List<Product> fruitsList = [
   ),
   Product(
     id: 2,
+    quantity: 1,
     name: 'Tomato',
     price: 2.01,
     bgColor: primaryColor.withOpacity(0.3),

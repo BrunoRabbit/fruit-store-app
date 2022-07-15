@@ -17,6 +17,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: const CustomAppBarWidget(),
       body: SafeArea(
         child: Column(
@@ -78,7 +79,7 @@ class _CartPageState extends State<CartPage> {
                   Icon(
                     Icons.info_outline_rounded,
                     color: Colors.black87.withOpacity(0.7),
-                    size: 22,
+                    size: 24,
                   ),
                   const SizedBox(width: 5),
                   AppCustomText(
@@ -94,8 +95,7 @@ class _CartPageState extends State<CartPage> {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: SizedBox(
-                height:
-                    (MediaQuery.of(context).size.height / 1.94).floorToDouble(),
+                height: (MediaQuery.of(context).size.height / 2),
                 child: ListView.builder(
                   itemCount: cartList.length,
                   itemBuilder: (context, index) {
@@ -108,43 +108,49 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 6,
-          horizontal: 16,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                AppCustomText(
-                  label: 'Total amount: ',
-                  size: 22,
-                  fontFamily: 'Inter-Bold',
-                ),
-                Spacer(),
-                AppCustomText(
-                  label: '\$33.22',
-                  fontFamily: 'Inter-SemiBold',
-                  size: 22,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            AppCustomButton.rounded(
-              borderRadius: 6,
-              width: double.infinity,
-              label: 'Press me',
-              onPress: () {},
-              type: CustomButtonType.rounded,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 18,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: const [
+                  AppCustomText(
+                    label: 'Total amount: ',
+                    size: 22,
+                    fontFamily: 'Inter-Bold',
+                  ),
+                  Spacer(),
+                  AppCustomText(
+                    label: '\$33.22',
+                    fontFamily: 'Inter-SemiBold',
+                    size: 22,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              AppCustomButton.rounded(
+                borderRadius: 6,
+                width: double.infinity,
+                label: 'Press me',
+                onPress: () {},
+                type: CustomButtonType.rounded,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );

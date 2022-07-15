@@ -18,6 +18,7 @@ void main() async {
 
 final themeData = ThemeData(
   fontFamily: 'Inter-Regular',
+  scaffoldBackgroundColor: Colors.grey[200],
 );
 
 class MyApp extends StatefulWidget {

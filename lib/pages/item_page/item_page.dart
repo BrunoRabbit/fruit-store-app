@@ -14,6 +14,7 @@ class ItemPage extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Product;
 
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
         onPressed: () {
