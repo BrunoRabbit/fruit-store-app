@@ -43,9 +43,9 @@ class ProductController extends ChangeNotifier {
       product.copyWith(
         quantity: product.quantity,
       );
-      allSum(product);
-      notifyListeners();
+      modifyTotalSum(true);
     }
+    notifyListeners();
   }
 
   decreaseQuantity(Product product) {
@@ -61,15 +61,26 @@ class ProductController extends ChangeNotifier {
       product.copyWith(
         quantity: product.quantity,
       );
-      notifyListeners();
+
+      modifyTotalSum(false);
     }
+    notifyListeners();
   }
 
-  double allSum(Product product) {
-    sum = cartList.fold<double>(
-      0,
-      (previousValue, element) => previousValue + element.totalPrice(),
-    );
+  double modifyTotalSum(bool isSum) {
+    if (isSum) {
+      sum = cartList.fold<double>(
+        0,
+        (previousValue, element) => previousValue + element.totalPrice(),
+      );
+    } else {
+      sum = cartList
+          .fold<double>(
+            0,
+            (previousValue, element) => previousValue - element.totalPrice(),
+          )
+          .abs();
+    }
     return sum;
   }
 }

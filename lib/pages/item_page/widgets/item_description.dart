@@ -116,7 +116,7 @@ class _ItemDescriptionState extends State<ItemDescription> {
                   onPress: () {
                     // fold para dobrar
                     _controller.addToCart(widget.product!);
-                    _controller.allSum(widget.product!);
+                    _controller.modifyTotalSum(true);
                     Navigator.of(context).pop();
                   },
                 ),
