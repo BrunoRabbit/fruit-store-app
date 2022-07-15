@@ -25,6 +25,12 @@ class Product {
     this.isFavorite,
   });
 
+  double sum = 0;
+
+  double totalPrice() {
+    return sum = price! * quantity!;
+  }
+
   Product copyWith({
     int? id,
     int? quantity,

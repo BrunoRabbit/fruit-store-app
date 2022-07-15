@@ -4,6 +4,7 @@ import 'package:fruit_store_app/models/product.dart';
 
 class ProductController extends ChangeNotifier {
   List<Product> productList = [];
+  double sum = 0.0;
 
   Future<bool?> changeFavorite(Product product) async {
     try {
@@ -42,6 +43,7 @@ class ProductController extends ChangeNotifier {
       product.copyWith(
         quantity: product.quantity,
       );
+      allSum(product);
       notifyListeners();
     }
   }
@@ -61,5 +63,13 @@ class ProductController extends ChangeNotifier {
       );
       notifyListeners();
     }
+  }
+
+  double allSum(Product product) {
+    sum = cartList.fold<double>(
+      0,
+      (previousValue, element) => previousValue + element.totalPrice(),
+    );
+    return sum;
   }
 }

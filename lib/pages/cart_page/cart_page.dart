@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_button.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
+import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/custom_app_bar_widget.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/item_card_widget.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -16,6 +18,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    final _controller = Provider.of<ProductController>(context);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: const CustomAppBarWidget(),
@@ -100,6 +103,7 @@ class _CartPageState extends State<CartPage> {
                   itemCount: cartList.length,
                   itemBuilder: (context, index) {
                     Product product = cartList[index];
+
                     return ItemCardWidget(product: product);
                   },
                 ),
@@ -122,15 +126,15 @@ class _CartPageState extends State<CartPage> {
                 height: 5,
               ),
               Row(
-                children: const [
-                  AppCustomText(
+                children: [
+                  const AppCustomText(
                     label: 'Total amount: ',
                     size: 22,
                     fontFamily: 'Inter-Bold',
                   ),
-                  Spacer(),
+                  const Spacer(),
                   AppCustomText(
-                    label: '\$33.22',
+                    label: '\$${_controller.sum.toStringAsFixed(2)}',
                     fontFamily: 'Inter-SemiBold',
                     size: 22,
                   ),
