@@ -19,9 +19,9 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
-  late final TextEditingController _controllerEmail;
-  late final TextEditingController _controllerPassword;
-  late final TextEditingController _controllerUsername;
+  late final TextEditingController _controllerEmail,
+      _controllerPassword,
+      _controllerUsername;
   final _formKey = GlobalKey<FormState>();
   late AuthBloc _authBloc;
 

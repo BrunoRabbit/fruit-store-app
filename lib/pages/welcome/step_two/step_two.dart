@@ -21,7 +21,7 @@ class _StepTwoState extends State<StepTwo> {
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
         isHomeScreen: false,
-        onPressed: () {
+        onTap: () {
           _controller.previousPage();
         },
       ),

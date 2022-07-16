@@ -5,8 +5,7 @@ import 'package:fruit_store_app/routes/app_routes.dart';
 
 class CardFruits extends StatelessWidget {
   final Product product;
-  final double width;
-  final double height;
+  final double width, height;
 
   const CardFruits({
     Key? key,

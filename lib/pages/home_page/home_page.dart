@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarWidget(
         icon: Icons.menu_rounded,
-        onPressed: () {
+        onTap: () {
           Scaffold.of(context).openDrawer();
         },
         isHomeScreen: true,

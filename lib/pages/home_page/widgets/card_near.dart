@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardNear extends StatelessWidget {
-  final String title;
-  final String image;
-  final String hours;
-  final String stars;
-  final String distance;
+  final String title, image, hours, stars, distance;
 
   const CardNear({
     Key? key,

@@ -10,16 +10,16 @@ import 'package:provider/provider.dart';
 class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
-  final IconData icon;
-  final VoidCallback onPressed;
+  final IconData? icon;
+  final VoidCallback onTap;
   final bool isHomeScreen;
   final bool isNeedContrast;
 
   const AppBarWidget({
     Key? key,
     this.preferredSize = const Size.fromHeight(50.0),
-    required this.icon,
-    required this.onPressed,
+    this.icon,
+    required this.onTap,
     required this.isHomeScreen,
     this.isNeedContrast = false,
   }) : super(key: key);
@@ -39,7 +39,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
           size: 33,
           color: widget.isNeedContrast ? Colors.white : Colors.black87,
         ),
-        onPressed: widget.onPressed,
+        onPressed: widget.onTap,
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       ),
       actions: [

@@ -18,9 +18,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  late final TextEditingController _controllerEmail;
-
-  late final TextEditingController _controllerPassword;
+  late final TextEditingController _controllerEmail, _controllerPassword;
 
   final _formKey = GlobalKey<FormState>();
 

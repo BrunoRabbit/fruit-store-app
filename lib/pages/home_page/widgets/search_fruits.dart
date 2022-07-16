@@ -41,9 +41,7 @@ class SearchFruits extends StatelessWidget {
                     );
                   }
 
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return Container();
                 },
               ),
         const SizedBox(

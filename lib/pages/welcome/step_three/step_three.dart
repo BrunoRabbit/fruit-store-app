@@ -25,7 +25,7 @@ class _StepThreeState extends State<StepThree> {
       appBar: AppBarWidget(
         isHomeScreen: false,
         icon: Icons.arrow_back_rounded,
-        onPressed: () {
+        onTap: () {
           _controller.previousPage();
         },
       ),
