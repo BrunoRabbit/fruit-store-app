@@ -58,6 +58,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-//  TODO - PROGRESS BAR BLOC
-//  TODO - PASSWORD VISIBILITY
- 

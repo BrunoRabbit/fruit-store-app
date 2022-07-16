@@ -6,6 +6,12 @@ class ProductController extends ChangeNotifier {
   List<Product> productList = [];
   double sum = 0.0;
 
+  void deleteItem(int id) {
+    sum -= (cartList[id].price!.abs() * cartList[id].quantity!);
+    cartList.removeAt(id);
+    notifyListeners();
+  }
+
   Future<bool?> changeFavorite(Product product) async {
     try {
       product.isFavorite = !product.isFavorite!;

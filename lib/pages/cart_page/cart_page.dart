@@ -6,6 +6,7 @@ import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/custom_app_bar_widget.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/item_card_widget.dart';
+import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -95,20 +96,53 @@ class _CartPageState extends State<CartPage> {
               ),
             ),
             const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: SizedBox(
-                height: (MediaQuery.of(context).size.height / 2),
-                child: ListView.builder(
-                  itemCount: cartList.length,
-                  itemBuilder: (context, index) {
-                    Product product = cartList[index];
+            cartList.isEmpty
+                ? Center(
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          './assets/images/empty_cart.png',
+                          height: 350,
+                        ),
+                        const Positioned(
+                          bottom: 35,
+                          left: 85,
+                          child: AppCustomText(
+                            label: 'Your cart is empty',
+                            size: 20,
+                            fontFamily: 'Inter-SemiBold',
+                            color: primaryColor,
+                          ),
+                        ),
+                        const Positioned(
+                          bottom: 10,
+                          left: 5,
+                          child: AppCustomText(
+                            label: 'You have no items in your shopping cart',
+                            size: 18,
+                            fontFamily: 'Inter-Medium',
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SizedBox(
+                      height: (MediaQuery.of(context).size.height / 2),
+                      child: ListView.builder(
+                        itemCount: cartList.length,
+                        itemBuilder: (context, index) {
+                          Product product = cartList[index];
 
-                    return ItemCardWidget(product: product);
-                  },
-                ),
-              ),
-            ),
+                          return ItemCardWidget(
+                            product: product,
+                            index: index,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),

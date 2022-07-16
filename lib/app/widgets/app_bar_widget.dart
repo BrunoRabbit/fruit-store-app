@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/pages/cart_page/cart_page.dart';
+import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:provider/provider.dart';
 
 class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
@@ -48,6 +49,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   return Padding(
                     padding: const EdgeInsets.only(top: 3, right: 12),
                     child: Badge(
+                      badgeColor: primaryColor,
                       badgeContent: Text(cartList.length.toString()),
                       child: IconButton(
                         onPressed: () {
