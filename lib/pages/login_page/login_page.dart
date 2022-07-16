@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/pages/home_page/widgets/agrouped_skelton.dart';
+import 'package:fruit_store_app/pages/home_page/home_page.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:fruit_store_app/pages/login_page/widgets/login_widget.dart';
 
@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
           if (state is Authenticated) {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const AgroupedSkelton(),
+                builder: (context) => const HomePage(),
               ),
             );
           }

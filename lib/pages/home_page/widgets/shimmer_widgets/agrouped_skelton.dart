@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/app/widgets/app_bar_widget.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/pages/home_page/widgets/skelton.dart';
+import 'package:fruit_store_app/pages/home_page/widgets/shimmer_widgets/skelton.dart';
 import 'package:fruit_store_app/pages/login_page/login_page.dart';
-import 'package:fruit_store_app/routes/app_routes.dart';
 
 class AgroupedSkelton extends StatefulWidget {
   const AgroupedSkelton({Key? key}) : super(key: key);
@@ -16,10 +15,10 @@ class AgroupedSkelton extends StatefulWidget {
 class _AgroupedSkeltonState extends State<AgroupedSkelton> {
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(const Duration(seconds: 1));
-      Navigator.of(context).pushNamed(RoutesPath.homePage);
-    });
+    // WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+    //   await Future.delayed(const Duration(seconds: 1));
+    //   Navigator.of(context).pushNamed(RoutesPath.homePage);
+    // });
     super.initState();
   }
 
@@ -92,7 +91,8 @@ class _AgroupedSkeltonState extends State<AgroupedSkelton> {
                   height: 180,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 3,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 2,
                     separatorBuilder: (context, index) {
                       return const SizedBox(
                         width: 25,

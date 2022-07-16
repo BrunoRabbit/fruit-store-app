@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/pages/login_page/login_page.dart';
+import 'package:fruit_store_app/pages/home_page/widgets/shimmer_widgets/agrouped_skelton.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
 import 'package:provider/provider.dart';
 import 'routes/app_routes.dart';
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: themeData,
-            home: const LoginPage(), // WelcomePage
+            home: const AgroupedSkelton(), // WelcomePage
             routes: AppRoutes.path,
           ),
         ),
