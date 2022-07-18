@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
+import 'package:fruit_store_app/pages/home_page/widgets/shimmer_widgets/agrouped_skelton.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
-import 'package:fruit_store_app/pages/home_page/home_page.dart';
 import 'package:fruit_store_app/pages/register_page/widgets/register_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
           if (state is Authenticated) {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const HomePage(),
+                builder: (context) => const AgroupedSkelton(),
               ),
             );
           }

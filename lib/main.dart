@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_store_app/controllers/home_page_controller.dart';
 import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/controllers/welcome_page_controller.dart';
 import 'package:fruit_store_app/global_blocs/auth/auth_bloc.dart';
-import 'package:fruit_store_app/pages/home_page/home_page.dart';
+import 'package:fruit_store_app/pages/login_page/login_page.dart';
 import 'package:fruit_store_app/repositories/auth_repository.dart';
 import 'package:provider/provider.dart';
 import 'routes/app_routes.dart';
@@ -18,7 +19,7 @@ void main() async {
 
 final themeData = ThemeData(
   fontFamily: 'Inter-Regular',
-  scaffoldBackgroundColor: Colors.grey[200],
+  scaffoldBackgroundColor: Colors.grey[100],
 );
 
 class MyApp extends StatefulWidget {
@@ -45,12 +46,15 @@ class _MyAppState extends State<MyApp> {
             ChangeNotifierProvider<ProductController>(
               create: (context) => ProductController(),
             ),
+            ChangeNotifierProvider<HomePageController>(
+              create: (context) => HomePageController(),
+            ),
           ],
           child: MaterialApp(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: themeData,
-            home: const HomePage(), // WelcomePage
+            home: const LoginPage(), // WelcomePage
             routes: AppRoutes.path,
           ),
         ),
