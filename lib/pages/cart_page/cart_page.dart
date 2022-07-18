@@ -22,7 +22,9 @@ class _CartPageState extends State<CartPage> {
     final _controller = Provider.of<ProductController>(context);
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: const CustomAppBarWidget(),
+      appBar: CustomAppBarWidget(
+        isImplyLeading: _controller.isFromNavbar,
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,14 +97,13 @@ class _CartPageState extends State<CartPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
             cartList.isEmpty
                 ? Center(
                     child: Stack(
                       children: [
                         Image.asset(
                           './assets/images/empty_cart.png',
-                          height: 350,
+                          height: 345,
                         ),
                         const Positioned(
                           bottom: 35,
@@ -116,7 +117,7 @@ class _CartPageState extends State<CartPage> {
                         ),
                         const Positioned(
                           bottom: 10,
-                          left: 5,
+                          left: 3,
                           child: AppCustomText(
                             label: 'You have no items in your shopping cart',
                             size: 18,
@@ -150,14 +151,14 @@ class _CartPageState extends State<CartPage> {
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 10,
-            horizontal: 18,
+            horizontal: 20,
+            vertical: 5,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               Row(
                 children: [
@@ -175,7 +176,7 @@ class _CartPageState extends State<CartPage> {
                 ],
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               AppCustomButton.rounded(
                 borderRadius: 6,
@@ -185,7 +186,7 @@ class _CartPageState extends State<CartPage> {
                 type: CustomButtonType.rounded,
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
             ],
           ),

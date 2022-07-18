@@ -5,7 +5,7 @@ import 'package:fruit_store_app/models/product.dart';
 class ProductController extends ChangeNotifier {
   List<Product> productList = [];
   double sum = 0.0;
-
+  bool isFromNavbar = false;
   void deleteItem(int id) {
     sum -= (cartList[id].price!.abs() * cartList[id].quantity!);
     cartList.removeAt(id);

@@ -5,10 +5,11 @@ class CustomAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
   @override
   final Size preferredSize;
-
+  final bool isImplyLeading;
   const CustomAppBarWidget({
     Key? key,
     this.preferredSize = const Size.fromHeight(50.0),
+    required this.isImplyLeading,
   }) : super(key: key);
 
   @override
@@ -19,6 +20,7 @@ class CustomAppBarWidget extends StatelessWidget
       backgroundColor: Colors.transparent,
       shadowColor: Colors.white,
       centerTitle: true,
+      automaticallyImplyLeading: isImplyLeading,
       title: const AppCustomText(
         label: 'Add to your cart',
         fontFamily: 'Inter-SemiBold',

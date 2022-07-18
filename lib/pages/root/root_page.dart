@@ -36,7 +36,7 @@ class _RootPageState extends State<RootPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) async {
-          await _homeController.changeNavIndex(index, _pageController);
+          await _homeController.changeNavIndex(index, _pageController, context);
         },
         currentIndex: _homeController.currentIndex,
         selectedItemColor: primaryColor,
