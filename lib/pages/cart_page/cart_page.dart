@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/app/widgets/app_bar_widget.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_button.dart';
 import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
-import 'package:fruit_store_app/pages/cart_page/widgets/custom_app_bar_widget.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/item_card_widget.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +22,10 @@ class _CartPageState extends State<CartPage> {
     final _controller = Provider.of<ProductController>(context);
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: CustomAppBarWidget(
+      appBar: AppBarWidget(
+        isHomeScreen: false,
+        onTap: () {},
+        title: 'Add to your cart',
         isImplyLeading: _controller.isFromNavbar,
       ),
       body: SafeArea(
@@ -130,7 +133,9 @@ class _CartPageState extends State<CartPage> {
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: SizedBox(
-                      height: (MediaQuery.of(context).size.height / 2),
+                      height: _controller.isFromNavbar
+                          ? MediaQuery.of(context).size.height / 1.82
+                          : MediaQuery.of(context).size.height / 2.1,
                       child: ListView.builder(
                         itemCount: cartList.length,
                         itemBuilder: (context, index) {

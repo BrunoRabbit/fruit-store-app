@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_store_app/app/widgets/app_custom_text.dart';
 import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/pages/cart_page/cart_page.dart';
@@ -14,6 +15,8 @@ class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   final VoidCallback onTap;
   final bool isHomeScreen;
   final bool isNeedContrast;
+  final String? title;
+  final bool? isImplyLeading;
 
   const AppBarWidget({
     Key? key,
@@ -21,6 +24,8 @@ class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
     this.icon,
     required this.onTap,
     required this.isHomeScreen,
+    this.isImplyLeading,
+    this.title,
     this.isNeedContrast = false,
   }) : super(key: key);
 
@@ -72,9 +77,17 @@ class _AppBarWidgetState extends State<AppBarWidget> {
               )
             : Container(),
       ],
-      foregroundColor: Colors.black,
-      elevation: 0,
+      foregroundColor: Colors.black87,
       backgroundColor: Colors.transparent,
+      shadowColor: Colors.white,
+      elevation: 0,
+      centerTitle: true,
+      automaticallyImplyLeading: widget.isImplyLeading ?? false,
+      title: AppCustomText(
+        label: widget.title ?? '',
+        fontFamily: 'Inter-SemiBold',
+        size: 18,
+      ),
     );
   }
 }
