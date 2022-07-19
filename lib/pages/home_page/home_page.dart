@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBarWidget(
         icon: Icons.menu_rounded,
+        isNeedButton: true,
         onTap: () {
           Scaffold.of(context).openDrawer();
         },

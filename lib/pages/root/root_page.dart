@@ -1,5 +1,7 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_store_app/controllers/home_page_controller.dart';
+import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +30,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     final _homeController = Provider.of<HomePageController>(context);
+    final _productController = Provider.of<ProductController>(context);
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -48,20 +51,34 @@ class _RootPageState extends State<RootPage> {
           fontSize: 15,
           fontFamily: 'Inter-Medium',
         ),
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
             label: 'Favorites',
-            icon: Icon(Icons.favorite),
+            icon: _productController.favoriteList.isNotEmpty
+                ? _homeController.listPages[_homeController.currentIndex] ==
+                        _homeController.listPages.elementAt(1)
+                    ? Badge(
+                        badgeColor: Colors.red,
+                        badgeContent: Text(
+                          _productController.favoriteList.length.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        child: const Icon(Icons.favorite),
+                      )
+                    : const Icon(Icons.favorite)
+                : const Icon(Icons.favorite),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Cart',
             icon: Icon(Icons.shopping_cart),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: 'Profile',
             icon: Icon(Icons.person),
           ),

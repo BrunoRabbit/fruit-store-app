@@ -17,6 +17,7 @@ class ItemPage extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBarWidget(
         icon: Icons.arrow_back_rounded,
+        isNeedButton: true,
         onTap: () {
           Navigator.pop(
             context,

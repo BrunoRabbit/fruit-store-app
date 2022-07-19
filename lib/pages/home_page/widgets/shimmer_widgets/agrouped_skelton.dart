@@ -26,8 +26,8 @@ class _AgroupedSkeltonState extends State<AgroupedSkelton> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(
-        onTap: () {},
+      appBar: const AppBarWidget(
+        isNeedButton: false,
         isHomeScreen: false,
       ),
       drawer: const Drawer(),

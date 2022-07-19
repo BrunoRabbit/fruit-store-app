@@ -16,15 +16,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBarWidget(
-      //   icon: Icons.arrow_back_rounded,
-      //   isHomeScreen: false,
-      // onPressed: () {
-      //   Navigator.of(context).pop(
-      //     RoutesPath.introductionPage,
-      //   );
-      // },
-      // ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {

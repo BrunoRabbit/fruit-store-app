@@ -24,7 +24,7 @@ class _CartPageState extends State<CartPage> {
       backgroundColor: Colors.grey[100],
       appBar: AppBarWidget(
         isHomeScreen: false,
-        onTap: () {},
+        isNeedButton: false,
         title: 'Add to your cart',
         isImplyLeading: _controller.isFromNavbar,
       ),

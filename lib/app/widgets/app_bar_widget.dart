@@ -12,21 +12,23 @@ class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
   final IconData? icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool isHomeScreen;
   final bool isNeedContrast;
   final String? title;
   final bool? isImplyLeading;
+  final bool? isNeedButton;
 
   const AppBarWidget({
     Key? key,
     this.preferredSize = const Size.fromHeight(50.0),
     this.icon,
-    required this.onTap,
+    this.onTap,
     required this.isHomeScreen,
     this.isImplyLeading,
     this.title,
     this.isNeedContrast = false,
+    required this.isNeedButton,
   }) : super(key: key);
 
   @override
@@ -38,15 +40,17 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   Widget build(BuildContext context) {
     return AppBar(
       leadingWidth: 98,
-      leading: IconButton(
-        icon: Icon(
-          widget.icon,
-          size: 33,
-          color: widget.isNeedContrast ? Colors.white : Colors.black87,
-        ),
-        onPressed: widget.onTap,
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      ),
+      leading: widget.isNeedButton!
+          ? IconButton(
+              icon: Icon(
+                widget.icon,
+                size: 33,
+                color: widget.isNeedContrast ? Colors.white : Colors.black87,
+              ),
+              onPressed: widget.onTap,
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            )
+          : null,
       actions: [
         widget.isHomeScreen
             ? Consumer<ProductController>(

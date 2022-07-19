@@ -3,13 +3,22 @@ import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
 
 class ProductController extends ChangeNotifier {
-  List<Product> productList = [];
   double sum = 0.0;
   bool isFromNavbar = false;
+  List<Product> favoriteList = [];
+
   void deleteItem(int id) {
     sum -= (cartList[id].price!.abs() * cartList[id].quantity!);
     cartList.removeAt(id);
     notifyListeners();
+  }
+
+  addToFavorite(Product product) {
+    if (product.isFavorite!) {
+      favoriteList.add(product);
+    } else {
+      favoriteList.remove(product);
+    }
   }
 
   Future<bool?> changeFavorite(Product product) async {
@@ -18,6 +27,7 @@ class ProductController extends ChangeNotifier {
       product.copyWith(
         isFavorite: product.isFavorite,
       );
+      await addToFavorite(product);
       notifyListeners();
       return true;
     } catch (e) {
