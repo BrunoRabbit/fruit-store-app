@@ -13,33 +13,24 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  final PageController _pageController = PageController();
-  // late final HomePageController _homeController;
-  // @override
-  // void initState() {
-  // _homeController = context.read<HomePageController>();
-  //   super.initState();
-  // }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final _homeController = Provider.of<HomePageController>(context);
     final _productController = Provider.of<ProductController>(context);
     return Scaffold(
       body: PageView(
-        controller: _pageController,
+        controller: _homeController.pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: _homeController.listPages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
         onTap: (index) async {
-          await _homeController.changeNavIndex(index, _pageController, context);
+          await _homeController.changeNavIndex(
+            index,
+            _homeController.pageController,
+            context,
+          );
         },
         currentIndex: _homeController.currentIndex,
         selectedItemColor: primaryColor,
@@ -77,10 +68,6 @@ class _RootPageState extends State<RootPage> {
           const BottomNavigationBarItem(
             label: 'Cart',
             icon: Icon(Icons.shopping_cart),
-          ),
-          const BottomNavigationBarItem(
-            label: 'Profile',
-            icon: Icon(Icons.person),
           ),
         ],
       ),

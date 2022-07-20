@@ -48,7 +48,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                 color: widget.isNeedContrast ? Colors.white : Colors.black87,
               ),
               onPressed: widget.onTap,
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             )
           : null,
       actions: [

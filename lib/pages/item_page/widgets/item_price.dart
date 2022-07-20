@@ -55,7 +55,6 @@ class _ItemPriceState extends State<ItemPrice> {
               height: 20,
             ),
             SizedBox(
-              // TODO - GO BACK TO TOP
               height: 45,
               width: 125,
               child: ElevatedButton(

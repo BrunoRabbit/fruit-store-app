@@ -96,7 +96,6 @@ class _StepThreeState extends State<StepThree> {
                 );
               },
             ),
-            // TODO - SHIMMER LOADING ANIMATION
           ],
         ),
       ),
