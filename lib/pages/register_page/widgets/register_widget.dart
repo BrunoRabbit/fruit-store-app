@@ -91,7 +91,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             ),
                             onPressed: () {
                               Navigator.of(context).pop(
-                                RoutesPath.introductionPage,
+                                RoutesPath.kPresentation,
                               );
                             },
                           ),

@@ -21,7 +21,7 @@ class ItemPage extends StatelessWidget {
         onTap: () {
           Navigator.pop(
             context,
-            RoutesPath.homePage,
+            RoutesPath.kHomePage,
           );
         },
         isHomeScreen: false,

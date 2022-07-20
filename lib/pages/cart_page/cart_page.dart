@@ -186,7 +186,7 @@ class _CartPageState extends State<CartPage> {
               AppCustomButton.rounded(
                 borderRadius: 6,
                 width: double.infinity,
-                label: 'Press me',
+                label: 'Buy',
                 onPress: () {},
                 type: CustomButtonType.rounded,
               ),

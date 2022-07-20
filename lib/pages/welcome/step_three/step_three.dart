@@ -37,7 +37,7 @@ class _StepThreeState extends State<StepThree> {
         child: Column(
           children: [
             SizedBox(
-              height: 240,
+              height: 250,
               child: SvgPicture.asset(
                 'assets/svgs/congrats.svg',
               ),

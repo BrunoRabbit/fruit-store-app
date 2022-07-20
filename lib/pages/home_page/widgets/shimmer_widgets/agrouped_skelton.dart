@@ -18,7 +18,7 @@ class _AgroupedSkeltonState extends State<AgroupedSkelton> {
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       await Future.delayed(const Duration(seconds: 1));
-      Navigator.of(context).pushNamed(RoutesPath.rootPage);
+      Navigator.of(context).pushNamed(RoutesPath.kRootPage);
     });
     super.initState();
   }
