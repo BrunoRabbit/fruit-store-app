@@ -1,16 +1,16 @@
-# fruit_store_app
+# Fruit store app
 
-A new Flutter project.
+The main objective of this project is to be a stock controller in which the user adds a fruit to the cart and can buy it.
 
-## Getting Started
+## What was used ?
 
-This project is a starting point for a Flutter application.
+I used the UX/UI of the company Rentech Digital 
+and here is the link.</t>
+> https://www.behance.net/gallery/118448459/Fruit-store-app </t>
 
-A few resources to get you started if this is your first Flutter project:
+<h6>Obviously, first of all I asked if I could do.</h6>
+This project has been around for a long time, there were some breaks due to college, as soon as it was over I decided to go back to the project.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+I used __Firebase__ resources, in addition I used object-oriented programming (OOP).
+The first idea was not to integrate the cart values for each user in Firebase. The idea was to store them via sqflite, since I had already studied about it.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
