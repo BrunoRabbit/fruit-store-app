@@ -1,6 +1,7 @@
 # Fruit store app
 
 The main objective of this project is to be a stock controller in which the user adds a fruit to the cart and can buy it.
+<h3>APP for Mobile</h3>
 
 ## What was used ?
 
