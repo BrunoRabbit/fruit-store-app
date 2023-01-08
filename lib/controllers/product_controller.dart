@@ -4,6 +4,7 @@ import 'package:fruit_store_app/models/product.dart';
 
 class ProductController extends ChangeNotifier {
   double sum = 0.0;
+  bool isChecked = false;
   bool isFromNavbar = false;
   List<Product> favoriteList = [];
 

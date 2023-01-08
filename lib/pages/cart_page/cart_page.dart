@@ -6,6 +6,7 @@ import 'package:fruit_store_app/controllers/product_controller.dart';
 import 'package:fruit_store_app/data/data.dart';
 import 'package:fruit_store_app/models/product.dart';
 import 'package:fruit_store_app/pages/cart_page/widgets/item_card_widget.dart';
+import 'package:fruit_store_app/routes/app_routes.dart';
 import 'package:fruit_store_app/styles/color_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -187,7 +188,9 @@ class _CartPageState extends State<CartPage> {
                 borderRadius: 6,
                 width: double.infinity,
                 label: 'Buy',
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).pushNamed(RoutesPath.kPaymentPage);
+                },
                 type: CustomButtonType.rounded,
               ),
               const SizedBox(
